@@ -1,39 +1,31 @@
+let inputA = document.getElementById("inputA");
+let inputB = document.getElementById("inputB");
+let addition;
 
+function resultA(full){
+    if( full === '+'){
+        addition = parseInt(inputA.value) + parseInt(inputB.value);
+            }
+    else if( full === '-'){
+        addition = inputA.value - inputB.value;
+    }
+    else if (full === 'X'){
+        addition = inputA.value * inputB.value;
+    }
+    else if ( full === '/'){
+        if( inputB.value == 0 ){
+            alert("Số bị chia không thể bằng 0");
+        }else {
+            addition = inputA.value / inputB.value;
+        }
 
+    }
 
-function Addition(){
-    let inputA = parseInt(document.getElementById("inputA").value);
-    let inputB = parseInt(document.getElementById("inputB").value);
-    let addition;
-    addition = inputA + inputB;
-    document.getElementById("result").innerText= "Result Division: " + addition;
-
+    document.getElementById("result").innerText = "Result Division: " + addition;
 
 }
 
-function Multiplication(){
-    let inputA = parseInt(document.getElementById("inputA").value);
-    let inputB = parseInt(document.getElementById("inputB").value);
-    let addition;
-    addition = inputA * inputB;
-    document.getElementById("result").innerText= "Result Division: " + addition;
-}
 
-function Subtraction(){
-    let inputA = parseInt(document.getElementById("inputA").value);
-    let inputB = parseInt(document.getElementById("inputB").value);
-    let addition;
-    addition = inputA - inputB;
-    document.getElementById("result").innerText= "Result Division: " + addition;
-}
-
-function Division(){
-    let inputA = parseInt(document.getElementById("inputA").value);
-    let inputB = parseInt(document.getElementById("inputB").value);
-    let addition;
-    addition = inputA / inputB;
-    document.getElementById("result").innerText= "Result Division: " + addition;
-}
 
 
 
