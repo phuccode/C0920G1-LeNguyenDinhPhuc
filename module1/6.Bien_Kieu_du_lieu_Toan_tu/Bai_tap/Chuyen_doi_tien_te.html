@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        h3, select{
+            margin-left: 30px;
+        }
+        select{
+            width: 100px;
+        }
+        #Convert{
+            margin-top: 76px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+<div>
+<form id="Amount">
+    <h3>Amount</h3><br>
+    <input type="number" id="number">
+</form>
+<form>
+    <h3>From Currency</h3><br>
+    <select typeof="drop-down" id="tu">
+        <option value="VietNam">VietNam</option>
+        <option value="USD">USD</option>
+    </select>
+</form>
+<form>
+    <h3>To Currency</h3><br>
+    <select typeof="drop-down" id="xuat">
+        <option value="USD">USD</option>
+        <option value="VietNam">VietNam</option>
+    </select>
+</form>
+<form>
+    <input type="submit" value="Convert" id="Convert" onclick="doiTien()">
+</form>
+</div>
+<script src="Chuyen_doi_tien_te.js"></script>
+</body>
+</html>
