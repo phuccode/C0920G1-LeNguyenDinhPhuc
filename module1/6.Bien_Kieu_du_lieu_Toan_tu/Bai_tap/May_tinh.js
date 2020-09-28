@@ -18,9 +18,7 @@ function resultA(full){
         }else {
             addition = inputA.value / inputB.value;
         }
-
     }
-
     document.getElementById("result").innerText = "Result Division: " + addition;
 
 }

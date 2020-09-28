@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .Surrounded {
+            background-image: url("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/beach_safety_covid_19_other/1800x1200_beach_safety_covid_19_other.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            margin-bottom: 10px;
+        }
+
+        .container_header_text {
+            font-weight: bold;
+            font-size: 2rem;
+
+        }
+
+
+        .container_header {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid;
+            width: 120px;
+            height: 20px;
+            /*border-collapse: collapse;*/
+
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .table{
+            display: flex;
+            margin-left: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="Surrounded">
+    <div class="container_header">
+        <span class="container_header_text">Thông tin người dùng</span>
+    </div>
+    <div>
+        <br><br>
+        Họ và tên
+        <br>
+        <input type="text" id="name">
+        <br><br>
+        Nhập số CMND
+        <br>
+        <input type="number" id="idCode">
+        <br><br>
+        Nhập ngày tháng năm sinh
+        <br>
+        <input type="date" id="birthday">
+        <br><br>
+        Nhập email
+        <br>
+        <input type="text" id="email">
+        <br><br>
+        Loại customer:
+        <select id="customer">
+            <option>Diamond</option>
+            <option>Platinum</option>
+            <option>Gold</option>
+            <option>Silver</option>
+            <option>Member</option>
+        </select>
+        <br><br>
+        Giảm giá
+        <br>
+        <input type="number" id="discount">
+        <br><br>
+        Số lượng đi kèm
+        <br>
+        <input type="number" id="amount">
+        <br><br>
+        Số ngày thuê
+        <br>
+        <input type="number" id="rentDays">
+        <br><br>
+        Loại dịch vụ
+        <select id="suv">
+            <option id="villa">Villa</option>
+            <option id="house">House</option>
+            <option id="room">Room</option>
+        </select>
+        <br><br>
+        Loại phòng thuê
+        <select id="classify">
+            <option>Vip</option>
+            <option>Business</option>
+            <option>Normal</option>
+        </select>
+        <br><br>
+        <button onclick="importA()" style="margin-bottom: 20px">Thuê phòng</button>
+    </div>
+</div>
+<div class="table">
+<table>
+    <tr>
+        <td>Họ và tên</td>
+        <td>CMND</td>
+        <td>Ngày tháng năm sinh</td>
+        <td>Email</td>
+        <td>Loại Customer</td>
+        <td>Giảm giá</td>
+        <td>Số lượng đi kèm</td>
+        <td>Số ngày thuê</td>
+        <td>Loại dịch vụ</td>
+        <td>Loại phòng thuê</td>
+        <td>Số tiền phải trả</td>
+    </tr>
+    <tr>
+        <td><span id="name2"></span></td>
+        <td><span id="idCode2"></span></td>
+        <td><span id="birthday2"></span></td>
+        <td><span id="email2"></span></td>
+        <td><span id="customer2"></span></td>
+        <td><span id="discount2"></span></td>
+        <td><span id="amount2"></span></td>
+        <td><span id="rentDays2"></span></td>
+        <td id="suv2"></td  >
+        <td id="classify2"></td>
+        <td id="cacl"></td>
+    </tr>
+</table>
+    <button onclick="">Chọn</button>
+</div>
+<script src="module1_AccountName.js"></script>
+</body>
+</html>

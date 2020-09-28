@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+       input{
+           width: 150px;
+           margin-top: 2px;
+       }
+        div{
+            margin-left: 50px;
+            width: 50%;
+            padding-left: 20px;
+            border: 2px solid;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <table>
+        <input style="width: 600px" id="inputA" disabled>
+        <br><br>
+        <tr>
+            <td><input id="1" type="button"  value="1" onclick="result('1')" ></td>
+            <td><input id="2" type="button"  value="2"  onclick="result('2')" ></td>
+            <td><input id="3" type="button"  value="3"  onclick="result('3')" ></td>
+            <td><input id="+" type="button"  value="+" onclick="result('+')" ></td>
+        </tr>
+        <tr>
+            <td><input id="4" type="button"  value="4" onclick="result('4')" ></td>
+            <td><input id="5" type="button"  value="5"  onclick="result('5')" ></td>
+            <td><input id="6" type="button"  value="6" onclick="result('6')" ></td>
+            <td><input id="-" type="button"  value="-" onclick="result('-')" ></td>
+        </tr>
+        <tr>
+            <td><input id="7" type="button"  value="7" onclick="result('7')" ></td>
+            <td><input id="8" type="button"  value="8"  onclick="result('8')" ></td>
+            <td><input id="9" type="button"  value="9" onclick="result('9')" ></td>
+            <td><input id="x" type="button"  value="x" onclick="result('x')" ></td>
+        </tr>
+        <tr>
+            <td><input id="c" type="button" value="c" onclick="clearA()"></td>
+            <td><input id="zero" type="button"  value="0"  onclick="result('0')" ></td>
+            <td><input type="button" value="=" onclick="result('=')"></td>
+            <td><input id="/" type="button"  value="/" onclick="result('/')" ></td>
+        </tr>
+
+    </table>
+
+</div>
+<script src="may_tinh.js"></script>
+</body>
+</html>
