@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+let i = prompt("Hãy nhâp nhiệt độ");
+for ( ;i >= 0 ;){
+    if( i <= 20){
+        i = parseInt(prompt("Hãy tăng nhiệt độ"));
+    }
+    else if(i >= 100) {
+        i = parseInt(prompt("Hãy giảm nhiệt độ"));
+    }
+    else{
+        alert("Nhiệt độ bình thường");
+        break;
+    }
+}
+</script>
+</body>
+</html>

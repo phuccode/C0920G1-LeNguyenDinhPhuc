@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nameCelebrity = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe" , "Regulus"];
+    let nameConstellation = [ "Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major" , "Leo"];
+    let inputName = prompt("Nhập tên ngôi sao");
+    function checkStar( ) {
+        for (let i = 0 ; i < nameCelebrity.length ; i++){
+            if ( inputName === nameCelebrity[i] ){
+                document.write("Chòm sao của " + nameCelebrity[i] + " là: " + nameConstellation[i]);
+                break;
+            }
+        }
+        if (inputName !== nameCelebrity[i]){
+            alert("Không có");
+        }
+    }
+    checkStar();
+</script>
+</body>
+</html>

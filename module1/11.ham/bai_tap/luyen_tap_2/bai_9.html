@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkCharacters(a,b) {
+        let count = 0;
+        for ( let j of a ){
+            if ( b === j ){
+                count++ ;
+            }
+            else {
+                alert("-1");
+                break;
+            }
+            alert("Kí tự " + b + " xuất hiện " + count + " lần trong mảng." );
+        }
+    }
+    let arr = new Array(6);
+    let c;
+    for ( let i = 0 ; i < arr.length ; i++){
+        arr[i] = prompt("Nhập kí tự bất kì");
+    }
+    c = prompt("Nhập kí tự kiểm tra");
+    checkCharacters(arr , c);
+</script>
+</body>
+</html>

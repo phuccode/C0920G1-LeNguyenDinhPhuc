@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>furama</title>
     <style>
         .Surrounded {
             background-image: url("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/beach_safety_covid_19_other/1800x1200_beach_safety_covid_19_other.jpg");
@@ -70,7 +70,14 @@
         <br>
         <input type="text" id="email">
         <br><br>
-        Loại customer:
+        Địa chỉ
+        <select id="address">
+            <option>Đà Nẵng</option>
+            <option>Huế</option>
+            <option>Quảng Nam</option>
+        </select>
+        <br><br>
+        Loại customer
         <select id="customer">
             <option>Diamond</option>
             <option>Platinum</option>
@@ -93,9 +100,9 @@
         <br><br>
         Loại dịch vụ
         <select id="suv">
-            <option id="villa">Villa</option>
-            <option id="house">House</option>
-            <option id="room">Room</option>
+            <option >Villa</option>
+            <option >House</option>
+            <option >Room</option>
         </select>
         <br><br>
         Loại phòng thuê
@@ -115,6 +122,7 @@
         <td>CMND</td>
         <td>Ngày tháng năm sinh</td>
         <td>Email</td>
+        <td>Địa chỉ</td>
         <td>Loại Customer</td>
         <td>Giảm giá</td>
         <td>Số lượng đi kèm</td>
@@ -124,20 +132,21 @@
         <td>Số tiền phải trả</td>
     </tr>
     <tr>
-        <td><span id="name2"></span></td>
-        <td><span id="idCode2"></span></td>
-        <td><span id="birthday2"></span></td>
-        <td><span id="email2"></span></td>
-        <td><span id="customer2"></span></td>
-        <td><span id="discount2"></span></td>
-        <td><span id="amount2"></span></td>
-        <td><span id="rentDays2"></span></td>
-        <td id="suv2"></td  >
-        <td id="classify2"></td>
-        <td id="cacl"></td>
+        <td><span id="name2">Phúc Lê</span></td>
+        <td><span id="idCode2">123123456</span></td>
+        <td><span id="birthday2">1998-08-11</span></td>
+        <td><span id="email2">phucle@gmail.com</span></td>
+        <td><span id="address2">Đà Nẵng</span></td>
+        <td><span id="customer2">Diamond</span></td>
+        <td><span id="discount2">20</span></td>
+        <td><span id="amount2">2</span></td>
+        <td><span id="rentDays2">3</span></td>
+        <td id="suv2">House</td>
+        <td id="classify2">Vip</td>
+        <td id="cacl">499</td>
     </tr>
 </table>
-    <button onclick="">Chọn</button>
+    <button onclick="edit()">Chọn</button>
 </div>
 <script src="module1_AccountName.js"></script>
 </body>
