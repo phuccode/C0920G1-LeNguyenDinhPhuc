@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Rectangle{
+        constructor(length,width) {
+            this.length = length;
+            this.width = width;
+        }
+        acreage(){
+            return this.length * this.width;
+        }
+        perimeter(){
+            return (this.length + this.width)/2;
+        }
+    }
+    let rectangle = new Rectangle(1,2);
+    alert(rectangle.acreage());
+    alert(rectangle.perimeter());
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Temperature{
+        constructor(temperatureC ) {
+            this.temperatureC = temperatureC;
+        }
+        convertF(){
+            return (this.temperatureC * 1.8) + 32;
+        }
+        convertK(){
+            return this.temperatureC + 273.15;
+        }
+    }
+        let number = prompt("Nhập Nhiệt độ theo độ C");
+        let temperature = new Temperature(parseInt(number));
+    alert("Độ C sau khi đổi sang độ F là : " + temperature.convertF());
+    alert("Độ C sau khi đổi sang độ K là : " + temperature.convertK());
+</script>
+</body>
+</html>
