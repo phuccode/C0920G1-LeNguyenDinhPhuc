@@ -2,15 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-<button onclick=""></button>
 <script>
-    class Mobile{
-        constructor() {
+    class Mobile {
+        constructor(pin, status, hopTHuDen, hopThuDi, thuSoanThao) {
+            this.pin = pin;
+            this.status = status;
+            this.hopTHuDen=hopTHuDen;
+            this.hopThuDi=hopThuDi;
+            this.thuSoanThao=thuSoanThao;
+        }
+        isStatus() {
+            return this.status;
+        }
+        onOffMobile() {
+            return !this.status;
+        }
+        sacPin() {
+            while (this.pin<=100) {
+                this.pin+=0.01;
+            }
+        }
+        nhanTinNhan(mobile) {
+            let message = mobile.guiTinNhan();
+            this.hopTHuDen.push(message);
+        }
+        guiTinNhan() {
+            if(this.status) {
+                if (confirm("Bạn muốn nhận tin nhắn mới hay không")) {
+                    let message = prompt("Nhập tin nhắn: ");
+                    this.hopThuDi.push(message);
+                    return message;
+                } else {
+                    let temp = "";
+                    for (let i = 0; i < this.thuSoanThao.length; i++) {
+                        temp += i + ". " + this.thuSoanThao[i] + "\n";
+                    }
+                    let index = prompt(temp);
+                    this.hopThuDi.push(this.thuSoanThao[index]);
+                    return this.thuSoanThao[index];
+                }
+                this.pin--;
+            }
+        }
+        xemThuDen() {
+            let temp = "";
+            for (let i = 0; i < this.hopTHuDen.length; i++) {
+                temp += i + ". " + this.hopTHuDen[i] + "\n";
+            }
+            let index = prompt(temp);
+            alert(this.hopTHuDen[index]);
         }
     }
+    let nokia =new Mobile(100,true,[],[],[])
+    let iphone =new Mobile(100,true,[],[],["C0420G1","C0920G1"])
+    nokia.nhanTinNhan(iphone);
+    nokia.xemThuDen();
 </script>
 </body>
 </html>

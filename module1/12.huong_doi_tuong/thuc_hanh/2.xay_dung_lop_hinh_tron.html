@@ -6,24 +6,34 @@
 </head>
 <body>
 <script>
+    class Circle{
+        constructor(radius) {
+            this.radius = radius;
+        }
 
-    let Circle = function(radius) {
-
-        this.radius = radius;
-
-    };
-    this.getRadius = function() {
-        return radius;
-    };
-    this.getArea = function() {
-        return Math.PI * radius * radius;
-    };
-    let circle = new Circle(2);
-    let radius = circle.getRadius();
-    let area = circle.getArea();
-    getRadius();
-    getArea();
-    alert("radius: " + radius + "; area: " + area);
+        getArea(){
+            return Math.PI * this.radius * this.radius;
+        }
+    }
+    let circle = new Circle(1);
+    alert(circle.getArea());
+    // let Circle = function(radius) {
+    //
+    //     this.radius = radius;
+    //
+    // };
+    // this.getRadius = function() {
+    //     return radius;
+    // };
+    // this.getArea = function() {
+    //     return Math.PI * radius * radius;
+    // };
+    // let circle = new Circle(2);
+    // let radius = circle.getRadius();
+    // let area = circle.getArea();
+    // getRadius();
+    // getArea();
+    // alert("radius: " + radius + "; area: " + area);
 
 
 </script>
