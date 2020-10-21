@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let n = parseInt(prompt("nhap n"));
+    while ( n > 20){
+        n = parseInt(prompt("nhap lai"))
+    }
+    let arr = new Array(n);
+    let sum = 0;
+        for ( let i = 0; i<arr.length; i ++ ){
+            arr [i] = parseInt(prompt("nhap mang"));
+            if(arr.length <= 20){
+                if ( arr[i] % 3 ===0 && arr[i] % 5 ===0){
+                    sum += arr[i];
+                }
+            }
+            else {
+                alert("Mang phai be hon 20");
+                break;
+            }
+        }
+       alert(sum);
+</script>
+</body>
+</html>

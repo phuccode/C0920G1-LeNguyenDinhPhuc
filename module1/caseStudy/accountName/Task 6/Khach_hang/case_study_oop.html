@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="case_study_oop.js"></script>
+</head>
+<body>
+<script>
+    let regexEmail = /\S+@\S+\.\S+/;
+    let regexBirthday = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+    let regexCMND =/^[\d]{8,8}$/;
+    function displayMainMenu() {
+        let choose = parseInt(prompt("1.Add new Customer." + "\n2.Display Information Customer"
+        + "\n3. Display Total Pays Customer" + "\n4. Edit Information Customer" + "\n5.Delete Customer" + "\n6.Exit"));
+        switch (choose) {
+            case 1:{
+                addNewCustomer();
+                break;
+            }
+            case 2:{
+                displayInformation();
+                break;
+            }
+            case 3:{
+                displayTotalPays();
+                break;
+            }
+            case 4:{
+                editCustomer();
+                break;
+            }
+            default:{
+                alert("Failed");
+            }
+        }
+    }
+    function editCustomer() {
+        let temp = "";
+        for (let i = 0; i < listCustomer.length; i++){
+            temp += i + ". Name: "+ listCustomer[i].getName() + "\n" ;
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        let edit =  parseInt(prompt("1.tên: " + listCustomer[chooseDisplay].getName() +
+            "\n2.cmnd: "+listCustomer[chooseDisplay].getCMND()+
+            "\n3.Ngày Sinh: "+listCustomer[chooseDisplay].getBirthday()+
+            "\n4.Email: "+listCustomer[chooseDisplay].getEmail() +
+            "\n5.Địa chỉ: "+listCustomer[chooseDisplay].getAddress()+
+            "\n6.Loai dịch vụ: "+listCustomer[chooseDisplay].getTypeService()+
+            "\n7.Loai Phòng: "+listCustomer[chooseDisplay].getTypeRoom()+
+            "\n8.Loai Khách hàng: "+listCustomer[chooseDisplay].getTypeCustomer()+
+            "\n 9.Giảm giá: "+listCustomer[chooseDisplay].getDiscount()+
+            "\n 10.Số lượng đi kèm: "+listCustomer[chooseDisplay].getQuantityIncluded()+
+            "\n 11.Số ngày thuê: "+ listCustomer[chooseDisplay].getRentDays())) ;
+        switch (edit) {
+            case 1:{
+                listCustomer[chooseDisplay][0] = prompt("Nhập lại tên: ");
+                break;
+            }
+            case 2:{
+                listCustomer[chooseDisplay][1] = prompt("Nhập lại CMND: ");
+                break;
+            }
+            case 3:{
+                listCustomer[chooseDisplay][2] = prompt("Nhập lại Ngày sinh: ");
+                break;
+            }
+            case 4:{
+                listCustomer[chooseDisplay][3] = prompt("Nhập lại Email: ");
+                break;
+            }
+            case 5:{
+                listCustomer[chooseDisplay][4] = prompt("Nhập lại Địa chỉ: ");
+                break;
+            }
+            case 6:{
+                listCustomer[chooseDisplay][5] = prompt("Nhập lại Loại dịch vụ: ");
+                break;
+            }case 7:{
+                listCustomer[chooseDisplay][6] = prompt("Nhập lại Loại Phòng: ");
+                break;
+            }case 8:{
+                listCustomer[chooseDisplay][7] = prompt("Nhập lại Loại Khách hàng: ");
+                break;
+            }case 9:{
+                listCustomer[chooseDisplay][8] = prompt("Nhập lại Giảm giá: ");
+                break;
+            }case 10:{
+                listCustomer[chooseDisplay][9] = prompt("Nhập lại Số lượng đi kèm: ");
+                break;
+            }case 11:{
+                listCustomer[chooseDisplay][10] = prompt("Nhập lại Số ngày thuê: ");
+                break;
+            }
+            default: {
+                alert("Failed");
+            }
+        }
+        displayMainMenu();
+    }
+    function displayInformation() {
+        let temp = "";
+        for (let i = 0; i<listCustomer.length; i++){
+            temp += i + ". Name: " + listCustomer[i].getName() + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        alert("Tên: " + listCustomer[chooseDisplay].getName()+"\n"
+            +"Ngày sinh: "+listCustomer[chooseDisplay].getBirthday()+"\n"
+            +"Email: "+listCustomer[chooseDisplay].getEmail()+"\n"
+            +"CMND: "+listCustomer[chooseDisplay].getCMND()+"\n"
+            +"Địa chỉ: "+listCustomer[chooseDisplay].getAddress()+"\n"
+            +"Type Service: "+listCustomer[chooseDisplay].getTypeService()+"\n"
+            +"Type Room: "+listCustomer[chooseDisplay].getTypeRoom()+"\n"
+            +"Type Customer: "+listCustomer[chooseDisplay].getTypeCustomer()+"\n"
+            +"Giảm giá: "+listCustomer[chooseDisplay].getDiscount()+"\n"
+            +"Quantity Included: "+listCustomer[chooseDisplay].getQuantityIncluded()+"\n"
+            +"Số ngày nghỉ: "+listCustomer[chooseDisplay].getRentDays());
+            displayMainMenu();
+    }
+    function displayTotalPays(){
+        let temp = "";
+        for (let i = 0; i<listCustomer.length; i++){
+            temp += i + ". Name: " + listCustomer[i].getName() + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        alert("Total Pays của bạn là: " + listCustomer[chooseDisplay].totalPay());
+        displayMainMenu();
+    }
+    let listCustomer = [];
+    function addNewCustomer() {
+        let checkValid = false;
+        let cus = new Customer();
+        let name = prompt("Input Name: ");
+        let cmnd;
+        let birthday;
+        let email;
+        do{
+            birthday = prompt("Input Birthday: ");
+            if (regexBirthday.test(birthday)){
+                checkValid = true;
+            }else {
+                alert("Ngày sinh nhập không hợp lệ!");
+            }
+        }while (!checkValid)
+        checkValid = false;
+        do{
+            email = prompt("Input Email: ");
+            if(regexEmail.test(email)){
+                checkValid = true;
+            }else {
+                alert("Email không hợp lệ vui lòng nhập lại");
+            }
+        }while (!checkValid)
+        checkValid = false;
+        do{
+            cmnd = prompt("Input CMND: ");
+            if(regexCMND.test(cmnd)){
+                checkValid =true;
+            }else {
+                alert("Chứng minh nhân dân bạn nhập không hợp lệ!")
+            }
+        }while (!checkValid)
+        checkValid =false;
+        let address = prompt("Input Address: ");
+        let typeService = prompt("Input Type Service: ");
+        let typeRoom = prompt("Input Type Room: ");
+        let typeCustomer = prompt("Input Type Customer: ");
+        let discount = prompt("Input Discount: ");
+        let quantityIncluded = prompt("Input Quantity Included: ");
+        let rentDays = prompt("Input Rent Days: ");
+        cus.setName(name);
+        cus.setBirthday(birthday);
+        cus.setCMND(cmnd);
+        cus.setEmail(email);
+        cus.setAddress(address);
+        cus.setTypeService(typeService);
+        cus.setTypeRoom(typeRoom);
+        cus.setTypeCustomer(typeCustomer);
+        cus.setDiscount(discount);
+        cus.setQuantityIncluded(quantityIncluded);
+        cus.setRentDays(rentDays);
+        listCustomer.push(cus);
+        alert("Bạn đã thêm thành công");
+        displayMainMenu();
+    }
+    displayMainMenu();
+</script>
+</body>
+</html>

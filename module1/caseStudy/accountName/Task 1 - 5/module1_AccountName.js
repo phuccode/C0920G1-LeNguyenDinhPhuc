@@ -26,22 +26,31 @@ function importA() {
             break;
      }  document.getElementById('cacl').innerHTML = chiPhi;
      //kiểm tra tính hợp lệ của số cmnd:
-    while ( document.getElementById('idCode').value > 0){
-        document.getElementById('idCode2').innerHTML =  document.getElementById('idCode').value;
-        break;
-    }
-    while (document.getElementById('idCode').value < 0){
-        alert("Chứng minh nhân dân sai định dạng vui lòng nhập lại");
-        document.getElementById('idCode2').innerHTML = "";
-        break;
-    }
+    let checkValid = false;
+    let regexCMND =/^[\d]{8,8}$/;
+        let cmnd =  document.getElementById('idCode').value;
+        if(regexCMND.test(cmnd)){
+            checkValid = true;
+            document.getElementById('idCode2').innerHTML = document.getElementById('idCode').value;
+        }else {
+            alert("Chứng minh nhân dân bạn nhập không hợp lệ!");
+            document.getElementById('idCode2').innerHTML = "";
+        }
+    checkValid =false;
+    // while ( document.getElementById('idCode').value > 0){
+    //     document.getElementById('idCode2').innerHTML =  document.getElementById('idCode').value;
+    //     break;
+    // }
+    // while (document.getElementById('idCode').value < 0){
+    //     alert("Chứng minh nhân dân sai định dạng vui lòng nhập lại");
+    //     document.getElementById('idCode2').innerHTML = "";
+    //     break;
+    // }
     //Kiểm tra tính hợp lệ của email
     let checkEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!checkEmail.test(document.getElementById('email').value)) {
         alert('Hay nhap dia chi email hop le.\nExample@gmail.com');
         document.getElementById('email2').innerHTML = "";
-        document.getElementById('email').focus;
-        return false;
     }
     else{
         document.getElementById('email2').innerHTML =  document.getElementById('email').value;
@@ -73,17 +82,25 @@ function importA() {
     name = name.trim().toLowerCase();
     let tempName = "";
     for ( let i = 0 ; i < name.length ; i++ ){
-        if (name.charAt(i) ===" " && name.charAt(i + 1) ===" "){
+        if (name.charAt(i) === " " && name.charAt(i + 1) === " "){
             continue;
         }
-
         if ( i === 0 || name.charAt(i - 1) ===" "){
             tempName += name.charAt(i).toUpperCase();
+            console.log(tempName);
             continue;
         }
         tempName += name.charAt(i);
     }
     document.getElementById("name2").innerHTML = tempName;
+    //Xóa dữ liệu khi nhập đúng ở các ô input
+    document.getElementById("name").value = "";
+    document.getElementById('idCode').value = "";
+    document.getElementById('birthday').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('discount').value = "";
+    document.getElementById('amount').value = "";
+    document.getElementById('rentDays').value = "";
 }
 //Đưa thông tin từ bảng lên các ô input
 function edit() {
@@ -164,6 +181,24 @@ function linkCustomer(){
             break;
     }
     return cus;
+}
+//xóa các phần tử đã lưu
+function deleteEdit(){
+    let deleteA = confirm("Bạn có muốn xóa " + document.getElementById('name2').innerHTML + " không ? ");
+    if (deleteA === true){
+        document.getElementById('name2').innerHTML =  "";
+        document.getElementById('idCode2').innerHTML =  "";
+        document.getElementById('birthday2').innerHTML =  "";
+        document.getElementById('email2').innerHTML = "";
+        document.getElementById('address2').innerHTML = "";
+        document.getElementById('customer2').innerHTML =  "";
+        document.getElementById('discount2').innerHTML =  "";
+        document.getElementById('amount2').innerHTML =  "";
+        document.getElementById('rentDays2').innerHTML =  "";
+        document.getElementById('suv2').innerHTML =  "";
+        document.getElementById('classify2').innerHTML =  "";
+        document.getElementById('cacl').innerHTML =  "";
+    }
 }
 
 

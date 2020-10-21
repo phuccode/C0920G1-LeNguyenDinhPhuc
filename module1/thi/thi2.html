@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Diem = parseInt(prompt("Nhap diem"));
+    function chamDiem(Diem) {
+        for ( let i = 0 ; i <=100; i++){
+            if( Diem % 2 === 0){
+                Diem += 1;
+            }
+            if (  Diem < 100) {
+                if (Diem < 50) {
+                    alert(Diem);
+                    alert("truot");
+                    break;
+                } else {
+                    alert(Diem);
+                    alert("good");
+                    break;
+                }
+            } else {
+                    alert("nhap sai diem");
+                    break;
+                }
+            }
+
+        }
+    chamDiem(Diem);
+
+</script>
+</body>
+</html>

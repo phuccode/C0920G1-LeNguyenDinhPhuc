@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="circle" width="500" height="500" style="border: solid #000000"></canvas>
+<script>
+    class Circle{
+        constructor(x,y,radius,color) {
+            this.radius = radius;
+            this.color=color;
+            this.x = x;
+            this.y = y;
+        }
+        getRadius(){
+            return this.radius;
+        }
+        getColor(){
+            return this.color;
+        }
+        getX(){
+            return this.x;
+        }
+        getY(){
+            return this.y;
+        }
+        render(canvas){
+            let ctx  = document.getElementById("circle").getContext("2d");
+            ctx.beginPath();
+            ctx.arc(circle.x,circle.y,circle.radius,0,2*Math.PI);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+    let radius = parseInt(prompt("Nhập bán kính"));
+    let x =  parseInt(prompt("Nhập tọa độ X"));
+    let y =  parseInt(prompt("Nhập tọa độ Y"));
+    let circle = new Circle(x,y,radius,"#000000");
+    circle.render();
+</script>
+</body>
+</html>

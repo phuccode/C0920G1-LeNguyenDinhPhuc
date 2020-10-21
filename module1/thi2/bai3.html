@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let checkFibonacci= parseInt(prompt("Hãy nhập số nguyên"));
+    let a = 1;
+    let b = 1;
+    let c = 2;
+    let check = false;
+    function isFibonacci(checkFibonacci) {
+        if (checkFibonacci < 1){
+            alert(checkFibonacci +" là số không thuộc dãy Fibonacci");
+            return check;
+        }
+        else if (checkFibonacci < 4){
+            alert(checkFibonacci +" là số thuộc dãy fibonacci");
+            check = true;
+            return check;
+        }
+        while (c < checkFibonacci){
+            a = b;
+            b = c;
+            c = a + b;
+        }
+        if (c === checkFibonacci){
+            check = true;
+            console.log(check);
+            alert(checkFibonacci + " là số thuộc dãy Fibonacci");
+            return check;
+        }else {
+            alert(checkFibonacci + " là số không thuộc dãy fibonacci");
+            return check;
+        }
+    }
+    isFibonacci(checkFibonacci);
+</script>
+</body>
+</html>

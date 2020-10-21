@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div id="display"></div>
+<div id="edit"></div>
+<script>
+    class Product {
+        constructor(id, name, phone,address,email ) {
+            this._id = id;
+            this._name = name;
+            this._phone = phone;
+            this._address = address;
+            this._email = email;
+        }
+        getId() {
+            return this._id;
+        }
+        getName() {
+            return this._name;
+        }
+        getPhone() {
+            return this._phone;
+        }
+        getAddress() {
+            return this._address;
+        }
+        getEmail(){
+            return this._email ;
+        }
+        setId(value) {
+            this._id = value;
+        }
+        setName(value) {
+            this._name = value;
+        }
+        setPhone(value) {
+            this._phone = value;
+        }
+        setAddress(value) {
+            this._address = value;
+        }
+        setEmail(){
+            this._email = email;
+        }
+    }
+    let productList = [];
+    productList.push(new Product(1, "Phuc", 12123, "Danang", "D@c.c"));
+    productList.push(new Product(1, "Chien", 12456, "Hue", "D@c.c"));
+    productList.push(new Product(1, "Anh", 12345, "Hai Phong", "D@c.c"));
+    function displayProduct() {
+        let temp = "<button class='btn btn-info' onclick='createProduct()'>CreateProduct</button>"
+        temp += "<table class='table'>";
+        temp += "<tr>" +
+            "<th>Id</th>" +
+            "<th>Name</th>" +
+            "<th>Phone</th>" +
+            "<th>Address</th>" +
+            "<th>Email</th>" +
+            "</tr>"
+        for (let i in productList) {
+            temp += "<tr>" +
+                "<td>" + productList[i].getId() + "</td> " +
+                "<td>" + productList[i].getName() + "</td> " +
+                "<td>" + productList[i].getPhone() + "</td> " +
+                "<td>" + productList[i].getAddress() + "</td> " +
+                "<td>" + productList[i].getEmail() + "</td> " +
+                "<td><button type='button' class='btn btn-primary' onclick='editProduct(" + i + ")'>Edit</button>" +
+                "</tr>"
+        }
+        temp += "</table>"
+        document.getElementById("display").innerHTML = temp;
+    }
+    function editProduct(index) {
+        let temp = "<h1>Edit Product</h1>"
+        temp += "<input type='text' class='form-control' disabled value='" + productList[index].getId() + "'></br>"
+            + "<input type='text' id='nameEdit' class='form-control' value='" + productList[index].getName() + "'></br>"
+            + "<input type='text' id='phoneEdit' class='form-control' value='" + productList[index].getPhone() + "'></br>"
+            + "<input type='text' id='addressEdit' class='form-control'  value='" + productList[index].getAddress() + "'></br>"
+            + "<input type='text' id='emailEdit' class='form-control'  value='" + productList[index].getEmail() + "'></br>"
+            + "<input type='button' class='btn btn-success' value='Edit' onclick='edit(" + index + ")'></br>";
+        document.getElementById("edit").innerHTML = temp;
+    }
+    function edit(index) {
+        productList[index].setName(document.getElementById("nameEdit").value);
+        productList[index].setPhone(document.getElementById("phoneEdit").value);
+        productList[index].setAddress(document.getElementById("addressEdit").value);
+        productList[index].setEmail(document.getElementById("emailEdit").value);
+        document.getElementById("edit").innerText = "";
+        displayProduct();
+    }
+    function createProduct(index) {
+        let temp = "<h1>Create Product</h1>"
+        temp += "Id: <input type='text' id='idProduct' class='form-control'></br>"
+            + "Name: <input type='text' id='nameEdit' class='form-control'></br>"
+            + "Phone: <input type='text' id='phoneEdit' class='form-control'></br>"
+            + "Address: <input type='text' id='addressEdit' class='form-control'></br>"
+            + "Email: <input type='text' id='emailEdit' class='form-control'></br>"
+            + "<input type='button' class='btn btn-success' value='Create' onclick='create()'></br>";
+        document.getElementById("edit").innerHTML = temp;
+    }
+    function create() {
+        let name = (document.getElementById("nameEdit").value);
+        let phone = (document.getElementById("phoneEdit").value);
+        let address = (document.getElementById("addressEdit").value);
+        let idProduct = (document.getElementById("idProduct").value);
+        let email = (document.getElementById("emailEdit").value);
+        let product = new Product(idProduct, name, phone, address,email);
+        productList.push(product);
+        document.getElementById("edit").innerText = "";
+        displayProduct();
+    }
+    displayProduct();
+</script>
+</body>
+</html>

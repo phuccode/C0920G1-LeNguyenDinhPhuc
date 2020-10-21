@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let checkArray = parseInt(prompt("Nhập số lượng phần tử muốn có trong mảng"));
+    let arr = new Array(checkArray);
+    for ( let j = 0; j < checkArray; j++ ){
+        arr[j] = parseInt(prompt("Nhập Mảng"));
+    }
+
+    function findMax(arr) {
+        let max = arr[0];
+        for ( let i = 0; i < arr.length;i++ ){
+            if ( arr[i] > max){
+                max = arr[i]
+            }
+        }
+        alert("Số lớn nhất là " + max);
+    }
+    findMax(arr);
+</script>
+</body>
+</html>

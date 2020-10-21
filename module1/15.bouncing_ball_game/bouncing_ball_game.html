@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="game" width="400" height="300"></canvas>
+<script>
+let canvas = document.getElementById("game");
+let context = canvas.getContext("2d");
+const FPS = 30;
+let bs = 30;
+    class Gameboard{
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
+        }
+    }
+    setInterval(update, 1000 / FPS);
+    class Ball {
+        constructor( bx, by, xv, yv ){
+            this.bx = bx;
+            this.by = by;
+            this.xv = xv;
+            this.yv = yv;
+        }
+        getX_getY(){
+             this.bx  = canvas.width / 2;
+             this.by = canvas.height / 2;
+        }
+        speed(){
+            this.xv = Math.floor(Math.random() * 101 + 100) / FPS;
+            this.yv = Math.floor(Math.random() * 101 + 100) / FPS;
+        }
+    }
+    function update() {
+        this.bx += this.xv;
+        this.by += this.yv;
+        context.fillStyle = "black";
+        context.fillRect(0, 0, canvas.width, canvas.height );
+        context.fillStyle = "yellow";
+        context.fillRect(this.bx - bs / 2, this.by - bs / 2, bs, bs);
+    }
+
+
+</script>
+</body>
+</html>
