@@ -1,29 +1,36 @@
 package mang_va_phuong_thuc.bai_tap;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TinTongCacSoOCotMang2Chieu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int sizeRowOne;
-        int sizeRowTwo;
-        System.out.println("Nhập số lượng phần tử muốn nhập ở hàng thứ nhất: ");
-        sizeRowOne = scanner.nextInt();
-        System.out.println("Nhập số lượng phần tử muốn nhập ở hàng thứ hai: ");
-        sizeRowTwo = scanner.nextInt();
-        int[][] array = new int[sizeRowOne][sizeRowTwo];
-        for ( int i = 0; i < sizeRowOne ; i++){
-            System.out.println("Nhập phần tử " +i+ ":");
-            array[0][i] = scanner.nextInt();
+        int sizeRows;
+        int sizeColums;
+        System.out.println("Nhập số hàng: ");
+        sizeRows = scanner.nextInt();
+        System.out.println("Nhập số cột: ");
+        sizeColums = scanner.nextInt();
+        //Tạo mảng 2 chiều mới với cột và hàng bằng số lượng đã nhập ở trên
+        int[][] array = new int[sizeRows][sizeColums];
+        //Duyệt mảng theo cột và hàng
+        for ( int i = 0; i < sizeRows ; i++){
+            for (int j = 0; j < sizeColums; j++){
+                System.out.println("Nhập phần tử " +i+ "-" +j);
+                array[i][j] = scanner.nextInt();
+            }
         }
-        for ( int j = 0; j < sizeRowTwo ; j++){
-            System.out.println("Nhập phần tử " +j+ ":");
-            array[1][j] = scanner.nextInt();
+        //In mảng vừa nhập để xem
+        for ( int i = 0; i < array.length; i++){
+            System.out.println(Arrays.toString(array[i]));
         }
         int sum = 0;
+        System.out.println("Nhập sô cột muốn cộng: ");
+        int inputIndex = scanner.nextInt();
         for ( int i = 0; i<array.length; i++){
-            sum += array[i][1];
-            System.out.println("Tổng các phần tử có trong cột thứ 2 là: " + sum);
+            sum += array[i][inputIndex - 1];
         }
+        System.out.println("Tổng các phần tử có trong cột thứ 2 là: " + sum);
     }
 }
