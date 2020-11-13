@@ -5,8 +5,8 @@ public class House extends Services {
     String describeOtherHouse;
     String numberFloorHouse;
 
-    public House(String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType, String standardRoomHouse, String describeOtherHouse, String numberFloorHouse) {
-        super(nameService, areaUsed, rentsCost, maxPeople, rentType);
+    public House(int id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType, String standardRoomHouse, String describeOtherHouse, String numberFloorHouse) {
+        super(id, nameService, areaUsed, rentsCost, maxPeople, rentType);
         this.standardRoomHouse = standardRoomHouse;
         this.describeOtherHouse = describeOtherHouse;
         this.numberFloorHouse = numberFloorHouse;
@@ -43,10 +43,10 @@ public class House extends Services {
 
     @Override
     public String toString() {
-        return "House: " + "\n" +
-                "standardRoomHouse: " + standardRoomHouse + "\n" +
-                "describeOtherHouse: " + describeOtherHouse + "\n" +
-                "numberFloorHouse: " + numberFloorHouse + "\n"
-                + super.toString();
+        return "House: " + "\n" + super.toString() +
+                "Standard Room House: " + standardRoomHouse + "\n" +
+                "Describe Other House: " + describeOtherHouse + "\n" +
+                "Number Floor House: " + numberFloorHouse + "\n" +
+        "---------------------------------------";
     }
 }
