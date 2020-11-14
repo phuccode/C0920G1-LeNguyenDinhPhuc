@@ -1,57 +1,66 @@
 package _16_text_file.bai_tap;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class CoppyTest {
-    public static void main(String[] args) {
-//        BufferedReader br = null;
-//        try{
-//            br = new BufferedReader(new FileReader("C:\\Users\\PC\\Desktop\\New Text Document.txt"));
-//            System.out.println("Đọc nội dung file sử dụng phương thức readLine()");
-//
-//            String contentLine = br.readLine();
-//            while (contentLine != null){
-//                System.out.println(contentLine);
-//                contentLine = br.readLine();
+    public static void main(String[] args) throws IOException {
+        //Tạo file txt
+//        File myObj = new File("newFile.txt");
+//        try {
+//            if(myObj.createNewFile()){
+//                System.out.println("File " + myObj.getName() + " đã được tạo");
 //            }
-//        }
-//        catch (IOException e){
+//            else {
+//                System.out.println("Tập tin đã tồn tại");
+//            }
+//        } catch (IOException e) {
+//            System.out.println("Có lỗi");
 //            e.printStackTrace();
 //        }
-//        finally {
+        //Ghi file
 //            try {
-//                br.close();
-//            }
-//            catch (IOException e){
+//                FileWriter myFileWrite = new FileWriter("newFile.txt", true);
+//                BufferedWriter newWrite = new BufferedWriter(myFileWrite);
+//                newWrite.write("Phúc");
+//                newWrite.newLine();
+//                System.out.println("Đã ghi vào file");
+//                newWrite.close();
+//            } catch (IOException e) {
+//                System.out.println("Lỗi");
 //                e.printStackTrace();
 //            }
-//        }
-//        BufferedReader br = null;
+        //Copy file txt(copy đè)
+//        InputStream inStream = null;
+//        OutputStream outStream = null;
 //
 //        try {
-//            br = new BufferedReader(new FileReader("C:\\\\Users\\\\PC\\\\Desktop\\\\New Text Document.txt"));
+//            inStream = new FileInputStream(new File("newFile.txt"));
+//            outStream = new FileOutputStream(new File("C:\\Users\\PC\\Desktop\\New Text Document.txt"));
 //
-//            System.out.println("Đọc nội dung file sử dụng phương thức read()");
+//            int length;
+//            byte[] buffer = new byte[1];
 //
-//            int num=0;
-//            char ch;
-//
-//            while((num = br.read()) != -1)
-//            {
-//                ch = (char) num;
-//                System.out.print(ch);
+//            // copy the file content in bytes
+//            while ((length = inStream.read(buffer)) > 0) {
+//                outStream.write(buffer, 0, length);
 //            }
+//            System.out.println("File is copied successful!");
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        } finally {
-//            try {
-//                br.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+//            inStream.close();
+//            outStream.close();
 //        }
-
+        //Copy file
+        BufferedReader fileCopy = new BufferedReader(new FileReader("newFile.txt"));
+        BufferedWriter filePaste =
+                new BufferedWriter(new FileWriter("C:\\Users\\PC\\Desktop\\bla.txt",true));
+        String line = null;
+        while ((line = fileCopy.readLine()) != null){
+            filePaste.write(line);
+            filePaste.newLine();
+        }
+        filePaste.close();
+        filePaste.close();
     }
 }
