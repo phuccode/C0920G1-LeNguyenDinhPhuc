@@ -1,4 +1,4 @@
-package case_study.commos;
+package case_study.models;
 
 import case_study.models.Services;
 

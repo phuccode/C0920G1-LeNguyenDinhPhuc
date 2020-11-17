@@ -1,14 +1,14 @@
 package case_study.models;
 
 public abstract class Services {
-    int id;
+    String id;
     String nameService;
     String areaUsed;
     String rentsCost;
     String maxPeople;
     String rentType;
 
-    public Services(int id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType) {
+    public Services(String id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType) {
         this.id = id;
         this.nameService = nameService;
         this.areaUsed = areaUsed;
@@ -25,11 +25,11 @@ public abstract class Services {
         this.rentType = rentType;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,10 +77,11 @@ public abstract class Services {
 
     @Override
     public String toString() {
-        return "nameService: " + nameService + "\n" +
-                "areaUsed: " + areaUsed + "\n" +
-                "rentsCost: " + rentsCost + "\n" +
-                "maxPeople: " + maxPeople + "\n" +
-                "rentType: " + rentType + "\n";
+        return "ID service: " + id + "\n" +
+                "Name Service: " + nameService + "\n" +
+                "Area Used: " + areaUsed + "\n" +
+                "Rents Cost: " + rentsCost + "\n" +
+                "Max People: " + maxPeople + "\n" +
+                "Rent Type: " + rentType + "\n";
     }
 }

@@ -1,8 +1,7 @@
 package case_study.commos;
 
 import case_study.controllers.MainController;
-import case_study.models.Services;
-import case_study.models.Villa;
+import case_study.models.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

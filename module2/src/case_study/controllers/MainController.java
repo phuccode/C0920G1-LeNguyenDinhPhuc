@@ -1,10 +1,11 @@
 package case_study.controllers;
 
-import case_study.commos.Customer;
+import case_study.models.Customer;
 import case_study.models.Room;
 import case_study.models.Villa;
 import case_study.models.House;
-import case_study.models.Services;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +15,9 @@ public class MainController {
     public List<House> servicesHouseList = new ArrayList<>();
     public List<Room> servicesRoomList = new ArrayList<>();
     public List<Customer> customerList = new ArrayList<>();
+    String fileVilla = "src/case_study/data/Villa.csv";
+    String fileHouse = "src/case_study/data/House.csv";
+    String fileRoom = "src/case_study/data/Room.csv";
 
     public List<Villa> getServicesVillaList() {
         return servicesVillaList;
@@ -57,7 +61,7 @@ public class MainController {
                 displayMainMenu();
                 break;
             case "6":
-                //
+                //Show Information of Employee
             case "7":
                 break;
         }
@@ -148,7 +152,7 @@ public class MainController {
     public void addNewCustomer(){
         int id = (customerList.size() > 0) ? (customerList.size() + 1) : 1;
         System.out.println("Customer ID: " + id);
-        Customer customer = new Customer(id,inputNameCustomer(),inputBirth(),inputGender(),inputNumID()
+        Customer customer = new Customer(id,inputNameCustomer(),inputBirth(),inputGender(), inputCmnd()
                 ,inputPhoneNumber(),inputEmail(),inputAddress(),inputUseService());
         customerList.add(customer);
     }
@@ -190,33 +194,141 @@ public class MainController {
     //Services
     //Phương thức add Villa
     public void addNewVilla(){
-        int id = (servicesVillaList.size() > 0) ? (servicesVillaList.size() + 1) : 1;
-        System.out.println("Villa ID: " + id);
-        Villa villa = new Villa(id,inputNameServices(),inputAreaServices(),inputCostServices(),inputQuantityIncluded(),inputRentalType(),inputStandardVilla(),inputComfortableDescriptionVilla(),inputFloorVilla(),inputAreaPoolVilla());
+        Villa villa = new Villa(inputID(),inputNameServices(),inputAreaServices(),inputCostServices(),
+                inputQuantityIncluded(),inputRentalType(),inputStandardVilla(),inputComfortableDescriptionVilla(),
+                inputFloorVilla(),inputAreaPoolVilla());
         servicesVillaList.add(villa);
+        try {
+            BufferedWriter writerVilla = new BufferedWriter(new FileWriter(fileVilla, true));
+            for(Villa villa1 : servicesVillaList){
+                writerVilla.write(villa1.getId() + "," + villa1.getNameService()
+                        + "," + villa1.getAreaUsed() + "," + villa1.getRentsCost()
+                        + "," + villa1.getMaxPeople() + "," + villa1.getRentType()
+                        + "," + villa1.getStandardRoomVilla() + "," + villa1.getDescribeOtherVilla()
+                        + "," + villa1.getAreaPool() + "," + villa1.getNumberFloorVilla());
+                writerVilla.newLine();
+            }
+            writerVilla.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //Phương thức add House
     public void addNewHouse(){
-        int id = (servicesHouseList.size() > 0) ? (servicesHouseList.size() + 1) : 1;
-        System.out.println("House ID: " + id);
-        House house = new House(id,inputNameServices(),inputAreaServices(),inputCostServices(),inputQuantityIncluded(),inputRentalType(),inputStandardHouse(),inputComfortableDescriptionHouse(),inputFloorHouse());
+        House house = new House(inputID(),inputNameServices(),inputAreaServices(),inputCostServices(),inputQuantityIncluded(),
+                inputRentalType(),inputStandardHouse(),inputComfortableDescriptionHouse(),inputFloorHouse());
         servicesHouseList.add(house);
+        try {
+            BufferedWriter writerHouse = new BufferedWriter(new FileWriter(fileHouse,true));
+            for (House house1 : servicesHouseList){
+                writerHouse.write(house1.getId() + "," + house1.getNameService()
+                        + "," + house1.getAreaUsed() + "," + house1.getRentsCost()
+                        + "," + house1.getMaxPeople() + "," + house1.getRentType()
+                        + "," + house1.getStandardRoomHouse() + "," + house1.getDescribeOtherHouse()
+                        + "," + house1.getNumberFloorHouse());
+                writerHouse.newLine();
+            }
+            writerHouse.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     //Phương thức add Room
     public void addNewRoom(){
-        int id = (servicesRoomList.size() > 0) ? (servicesRoomList.size() + 1) : 1;
-        System.out.println("Room ID: " + id);
         String accompaniedService = "";
-        Room room = new Room(id,inputNameServices(),inputAreaServices(),inputCostServices(),inputQuantityIncluded(),inputRentalType(),accompaniedService);
+        Room room = new Room(inputID(),inputNameServices(),inputAreaServices(),inputCostServices(),inputQuantityIncluded(),
+                inputRentalType(),accompaniedService);
         servicesRoomList.add(room);
+        try {
+            BufferedWriter writerRoom = new BufferedWriter(new FileWriter(fileRoom, true));
+            for (Room room1 : servicesRoomList){
+                writerRoom.write(room1.getId() + "," + room1.getNameService()
+                        + "," + room1.getAreaUsed() + "," + room1.getRentsCost()
+                        + "," + room1.getMaxPeople() + "," + room1.getRentType()
+                        + "," + room1.getFreeService());
+                writerRoom.newLine();
+            }
+            writerRoom.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    //Đọc file csv khi tắt chương trình arraylist sẽ không lưu và phương thức này giúp đọc lại file csv
+    public void readDataVilla(){
+//        try {
+//            BufferedReader readerVilla = new BufferedReader(new FileReader(fileVilla));
+//            String line;
+//            while ((line = readerVilla.readLine()) != null){
+//                String[] countLine;
+//                countLine = line.split(",");
+//                Villa villa = new Villa(countLine[0],countLine[1],countLine[2],countLine[3],
+//                        countLine[4],countLine[5],countLine[6],countLine[7],countLine[8],countLine[9]);
+//                servicesVillaList.add(villa);
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+    public void readDataHouse(){
+        try {
+            BufferedReader readerHouse = new BufferedReader(new FileReader(fileHouse));
+            String line;
+            while ((line = readerHouse.readLine()) != null){
+                String[] countLine;
+                countLine = line.split(",");
+                House house = new House(countLine[0],countLine[1],countLine[2],countLine[3],
+                        countLine[4],countLine[5],countLine[6],countLine[7],countLine[8]);
+                servicesHouseList.add(house);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void readDataRoom(){
+        try {
+            BufferedReader readerRoom = new BufferedReader(new FileReader(fileRoom));
+            String line;
+            while ((line = readerRoom.readLine()) != null){
+                String[] countLine;
+                countLine = line.split(",");
+                Room room = new Room(countLine[0],countLine[1],countLine[2],countLine[3],
+                        countLine[4],countLine[5],countLine[6]);
+                servicesRoomList.add(room);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     //Phương thức hiện ra các Services
     public void showVilla(){
-        for(Villa villa : servicesVillaList){
-            System.out.println(villa.showInfor());
+        try {
+            BufferedReader readerVilla = new BufferedReader(new FileReader(fileVilla));
+            String line;
+            while ((line = readerVilla.readLine()) != null){
+                String[] countLine;
+                countLine = line.split(",");
+                Villa villa = new Villa(countLine[0],countLine[1],countLine[2],countLine[3],
+                        countLine[4],countLine[5],countLine[6],countLine[7],countLine[8],countLine[9]);
+                servicesVillaList.add(villa);
+                System.out.println(villa);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+//        for(Villa villa : servicesVillaList){
+//            System.out.println(villa.showInfor());
+//        }
     }
     public void showHouse(){
         for (House house : servicesHouseList){
@@ -231,6 +343,10 @@ public class MainController {
 
     //Các phương thức để nhập vào
     //Service
+    private String inputID(){
+        System.out.println("Input ID services: ");
+        return getScan().nextLine();
+    }
     private String inputNameServices() {
         System.out.println("Input name services :  ");
         return getScan().nextLine();
@@ -292,7 +408,7 @@ public class MainController {
         System.out.println("Input gender :  ");
         return getScan().nextLine();
     }
-    private String inputNumID() {
+    private String inputCmnd() {
         System.out.println("Input CMND :  ");
         return getScan().nextLine();
     }
