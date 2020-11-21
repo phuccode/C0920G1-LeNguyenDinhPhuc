@@ -14,6 +14,10 @@ public class Villa extends Services {
         this.numberFloorVilla = numberFloorVilla;
     }
 
+    public Villa(String nameService) {
+        super(nameService);
+    }
+
     public String getStandardRoomVilla() {
         return standardRoomVilla;
     }

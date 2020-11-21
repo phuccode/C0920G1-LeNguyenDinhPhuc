@@ -25,6 +25,10 @@ public abstract class Services {
         this.rentType = rentType;
     }
 
+    public Services(String nameService) {
+        this.nameService = nameService;
+    }
+
     public String getId() {
         return id;
     }

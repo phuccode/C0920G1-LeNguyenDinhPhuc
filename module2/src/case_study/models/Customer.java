@@ -1,9 +1,9 @@
 package case_study.models;
 
+import _12_java_collection_framework.thuc_hanh.comparable_comparator.Student;
 import case_study.models.Services;
 
-public class Customer {
-    int id;
+public class Customer implements Comparable<Customer>{
     String customerName;
     String birthday;
     String gender;
@@ -11,10 +11,9 @@ public class Customer {
     String numPhone;
     String email;
     String address;
-    String useService;
+    Services useService;
 
-    public Customer(int id, String customerName, String birthday, String gender, String numID, String numPhone, String email, String address, String useService) {
-        this.id = id;
+    public Customer( String customerName, String birthday, String gender, String numID, String numPhone, String email, String address, Services useService) {
         this.customerName = customerName;
         this.birthday = birthday;
         this.gender = gender;
@@ -25,12 +24,14 @@ public class Customer {
         this.useService = useService;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Customer(String customerName, String birthday, String gender, String numID, String numPhone, String email, String address) {
+        this.customerName = customerName;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.numID = numID;
+        this.numPhone = numPhone;
+        this.email = email;
+        this.address = address;
     }
 
     public String getCustomerName() {
@@ -89,11 +90,11 @@ public class Customer {
         this.address = address;
     }
 
-    public String getUseService() {
+    public Services getUseService() {
         return useService;
     }
 
-    public void setUseService(String useService) {
+    public void setUseService(Services useService) {
         this.useService = useService;
     }
 
@@ -108,5 +109,10 @@ public class Customer {
                 "Address: " + address + "\n" +
                 "Use service: " + useService + "\n" +
                 "-------------------------------------");
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return this.getCustomerName().compareTo(o.getCustomerName());
     }
 }
