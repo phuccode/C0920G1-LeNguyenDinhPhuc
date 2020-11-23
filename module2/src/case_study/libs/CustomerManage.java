@@ -1,133 +1,123 @@
 package case_study.libs;
 
+import case_study.commos.ReadWriteFile;
+import case_study.commos.Validate;
 import case_study.models.Customer;
+import case_study.models.Room;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class CustomerManage {
     public List<Customer> customerList = new ArrayList<>();
     String fileCustomer = "src/case_study/data/Customer.csv";
-    String fileBooking = "src/case_study/data/Booking.csv";
     //Customer
     //Phương thức add customer
     public void addNewCustomer(){
         Customer customer = new Customer(inputNameCustomer(),inputBirth(),inputGender(), inputCmnd()
                 ,inputPhoneNumber(),inputEmail(),inputAddress());
         customerList.add(customer);
-        try {
-            BufferedWriter writerCustomer = new BufferedWriter(new FileWriter(fileCustomer));
-            for(Customer customer1 : customerList){
-                writerCustomer.write(customer1.getCustomerName() + "," + customer1.getBirthday()
-                        + "," + customer1.getGender() + "," + customer1.getNumID() + "," + customer1.getNumPhone()
-                        + "," + customer1.getEmail() + "," + customer1.getAddress() + "," + customer1.getUseService());
-                writerCustomer.newLine();
-            }
-            writerCustomer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ReadWriteFile.writeFile(fileCustomer,customer.getCustomerName() + "," + customer.getBirthday()
+                + "," + customer.getGender() + "," + customer.getNumID() + "," + customer.getNumPhone()
+                + "," + customer.getEmail() + "," + customer.getAddress());
     }
 
     //Phương thức hiện danh sách customer đã lưu
-    public void showInformationCustomers(){
-        readDataCus();
-        //Sắp xếp sản phẩm tăng dần theo tên sản phẩm
+    public List<Customer> showInformationCustomers(){
+        List<String[]> listCus = ReadWriteFile.readFile(fileCustomer);
+        customerList.clear();
+        for (String[] cus : listCus) {
+            Customer cus1 = new Customer(cus[0],cus[1],cus[2],cus[3],cus[4],cus[5],cus[6]);
+            customerList.add(cus1);
+        }
         Collections.sort(customerList);
-        for( Customer customer : customerList){
-            customer.showInfor();
+        for (Customer customer : customerList){
+            System.out.println(customer.showInfor());
+        }
+        return customerList;
+    }
+    public static int count = 1;
+    public void buyTicket(){
+        String temp = "vé số " + count;
+        if (count <= 2){
+            System.out.println("Bạn đã mua vé xem phim, vé số " + count);
+        } else {
+            System.out.println("Đã bán hết vé.");
+            System.out.println("Danh sách khách hàng mua vé!");
+            showTicket();
+        }
+        count++;
+        Customer customer = new Customer(inputNameCustomer(),inputBirth(),inputCmnd(),inputPhoneNumber(),
+                inputEmail(),inputAddress(),temp);
+        listTicket.add(customer);
+        customerList.add(customer);
+        ReadWriteFile.writeFile(fileCustomer,customer.getCustomerName() +"," +customer.getBirthday()+","
+                +customer.getNumID()+","+customer.getNumPhone()+","
+                +customer.getEmail()+","+customer.getAddress()+ ","+ temp);
+    }
+
+
+    public static Queue<Customer> listTicket = new LinkedList<>();
+    public void showTicket(){
+        for (Customer customers : listTicket){
+            System.out.println(customers.getCustomerName() +
+                    "\n ----------------");
         }
     }
-    //Phương thức cho khách hàng chọn loại phòng
-//    public void addNewBooking(){
-//        Customer customerBooking;
-//        showInformationCustomers();
-//        System.out.println("Choose customer for booking");
-//        int choose = getScan().nextInt();
-//        for (Customer customer : customerList) {
-//            if (choose == customerList.indexOf(customer) + 1) {
-//                customerBooking = customer;
+    //Đọc file csv Customer
+//    public void readDataCus(){
+//        try {
+//            BufferedReader bufferedReaderCus = new BufferedReader(new FileReader(fileCustomer));
+//            String line;
+//            while ((line = bufferedReaderCus.readLine()) != null){
+//                String[] cusSplit;
+//                cusSplit = line.split(",");
+//                Customer customer = new Customer(cusSplit[0],cusSplit[1],cusSplit[2],cusSplit[3],cusSplit[4],
+//                        cusSplit[5],cusSplit[6]);
+//                customerList.add(customer);
 //            }
-//        }
-//        System.out.println("1. Villa");
-//        System.out.println("2. House");
-//        System.out.println("3. Room");
-//        switch (getScan().nextLine()){
-//            case "1":
-////                showVilla();
-////                System.out.println("Choose name villa you want: ");
-////                String chooseVilla = getScan().nextLine();
-////                for(Villa villa : servicesVillaList){
-////                    if (chooseVilla.equals(villa.getNameService())){
-////                        try {
-////                            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileBooking));
-////                            for (Customer customer : customerList){
-//////                                bufferedWriter.write();
-////
-////                            }
-////                        } catch (IOException e) {
-////                            e.printStackTrace();
-////                        }
-////                    }
-////                }
-//                break;
-//            case "2":
-////                ServiceManage;
-//                break;
-//            case "3":
-////                showRoom();
-//                break;
+//            bufferedReaderCus.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
 //        }
 //    }
-
-
-    //Đọc file csv Customer
-    public void readDataCus(){
-        try {
-            BufferedReader bufferedReaderCus = new BufferedReader(new FileReader(fileCustomer));
-            String line;
-            while ((line = bufferedReaderCus.readLine()) != null){
-                String[] cusSplit;
-                cusSplit = line.split(",");
-                Customer customer = new Customer(cusSplit[0],cusSplit[1],cusSplit[2],cusSplit[3],cusSplit[4],
-                        cusSplit[5],cusSplit[6]);
-                customerList.add(customer);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     //Cus
+    private static final String NAME_REGEX ="^([A-Z][a-z]+\\s)+(|[A-Z][a-z]+)$";
+    private static final String BIRTHDAY_REGEX ="^(((0[1-9]|[12][0-9]|30)[-\\/](0[13-9]|1[012])|31[-\\/](0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-\\/]02)" +
+            "[-\\/](19[0-9]{2}|200[012])|29[-\\/]02[-\\/]" +
+            "([0-9]{2}(([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468][048]|0[0-9]|1[0-6])00))$";
+    private static final String GENDER_REGEX = "^[mM][aA][lL][eE]|[fF][eE][mM][aA][lL][eE]|[uU][nN][kK][nN][oO][wW]$";
+    private static final String CMND_REGEX = "[0-9]{9}";
+    private static final String PHONE_NUMBER = "^0([0-9]{9})$";
+    private static final String EMAIL_REGEX ="^[a-z0-9_]+[a-z0-9]@([a-z0-9]+\\.)[a-z]+(|\\.[a-z]+)$";
+    public  static final String REGEX_STR = "[A-Z][a-z]*" ;
     private String inputNameCustomer() {
-        System.out.println("Input name :  ");
-        return getScan().nextLine();
+        System.out.println("Input name customer (Abc Abc):  ");
+        return Validate.isCheckCus(getScan().nextLine(),NAME_REGEX);
     }
     private String inputBirth() {
-        System.out.println("Input birthday :  ");
-        return getScan().nextLine();
+        System.out.println("Input birthday (XX/YY/MMMM):  ");
+        return Validate.isCheckCus(getScan().nextLine(),BIRTHDAY_REGEX);
     }
     private String inputGender() {
-        System.out.println("Input gender :  ");
-        return getScan().nextLine();
+        System.out.println("Input gender (male/ female / unknow ):  ");
+        return Validate.isCheckCus(getScan().nextLine(),GENDER_REGEX);
     }
     private String inputCmnd() {
-        System.out.println("Input CMND :  ");
-        return getScan().nextLine();
+        System.out.println("Input CMND (9 number):  ");
+        return Validate.isCheckCus(getScan().nextLine(),CMND_REGEX);
     }
     private String inputPhoneNumber() {
-        System.out.println("Input phone number :  ");
-        return getScan().nextLine();
+        System.out.println("Input phone number (0XXXXXXXXX):  ");
+        return Validate.isCheckCus(getScan().nextLine(),PHONE_NUMBER);
     }
     private String inputEmail() {
-        System.out.println("Input email :  ");
-        return getScan().nextLine();
+        System.out.println("Input email ( abc@.abc.abc ):  ");
+        return Validate.isCheckCus(getScan().nextLine(),EMAIL_REGEX);
     }
     private String inputAddress() {
-        System.out.println("Input address :  ");
-        return getScan().nextLine();
+        System.out.println("Input address (Abc):  ");
+        return Validate.isCheckCus(getScan().nextLine(),REGEX_STR);
     }
     //--------------------------------
 

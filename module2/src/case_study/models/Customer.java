@@ -11,9 +11,9 @@ public class Customer implements Comparable<Customer>{
     String numPhone;
     String email;
     String address;
-    Services useService;
+    String useService;
 
-    public Customer( String customerName, String birthday, String gender, String numID, String numPhone, String email, String address, Services useService) {
+    public Customer( String customerName, String birthday, String gender, String numID, String numPhone, String email, String address, String useService) {
         this.customerName = customerName;
         this.birthday = birthday;
         this.gender = gender;
@@ -33,6 +33,8 @@ public class Customer implements Comparable<Customer>{
         this.email = email;
         this.address = address;
     }
+
+    public Customer(){}
 
     public String getCustomerName() {
         return customerName;
@@ -90,16 +92,21 @@ public class Customer implements Comparable<Customer>{
         this.address = address;
     }
 
-    public Services getUseService() {
+    public String getUseService() {
         return useService;
     }
 
-    public void setUseService(Services useService) {
+    public void setUseService(String useService) {
         this.useService = useService;
     }
 
-    public void showInfor() {
-        System.out.println("Customer: " + "\n" +
+    public String showInfor() {
+        return toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Customer: " + "\n" +
                 "Customer name: " + customerName + "\n" +
                 "Birthday: " + birthday +"\n" +
                 "Gender: " + gender + "\n" +
@@ -108,7 +115,7 @@ public class Customer implements Comparable<Customer>{
                 "Email: " + email + "\n" +
                 "Address: " + address + "\n" +
                 "Use service: " + useService + "\n" +
-                "-------------------------------------");
+                "-------------------------------------" + "\n";
     }
 
     @Override

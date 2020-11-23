@@ -2,10 +2,10 @@ package case_study.models;
 
 public class Employee {
     String employeeName;
-    int birthday;
+    String birthday;
     String address;
 
-    public Employee(String employeeName, int birthday, String address) {
+    public Employee(String employeeName, String birthday, String address) {
         this.employeeName = employeeName;
         this.birthday = birthday;
         this.address = address;
@@ -19,11 +19,11 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
-    public int getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(int birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

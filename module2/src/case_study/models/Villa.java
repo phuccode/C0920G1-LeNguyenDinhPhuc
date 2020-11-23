@@ -1,6 +1,6 @@
 package case_study.models;
 
-public class Villa extends Services {
+public class Villa extends Services implements Comparable<Villa>{
     String standardRoomVilla;
     String describeOtherVilla;
     String areaPool;
@@ -14,9 +14,6 @@ public class Villa extends Services {
         this.numberFloorVilla = numberFloorVilla;
     }
 
-    public Villa(String nameService) {
-        super(nameService);
-    }
 
     public String getStandardRoomVilla() {
         return standardRoomVilla;
@@ -63,5 +60,10 @@ public class Villa extends Services {
                 "Area Pool: " + areaPool + "\n" +
                 "Number Floor Villa: " + numberFloorVilla + "\n" +
                 "---------------------------------------";
+    }
+
+    @Override
+    public int compareTo(Villa o) {
+        return this.getNameService().compareTo(o.getNameService());
     }
 }
