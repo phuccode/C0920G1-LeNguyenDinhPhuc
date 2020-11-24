@@ -40,6 +40,6 @@ public class Employee {
         return "Employee: " + "\n" +
                 "Employee Name: " + employeeName + "\n" +
                 "Birthday: " + birthday + "\n" +
-                "Address: " + address + "\n" ;
+                "Address: " + address + "\n";
     }
 }

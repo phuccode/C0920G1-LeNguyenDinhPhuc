@@ -9,22 +9,22 @@ import java.util.Stack;
 public class FilingCabinets {
     public static void FilingCabinets(){
         Boolean check = true;
-        System.out.println("Nhập tên nhân viên cần tìm!");
+        System.out.println("Input name employee you need to find");
         String checkEmployee = MainController.getScan().nextLine();
         Stack<Employee> employeeStacks = ReadWriteFile.readFileEmployeeStack();
         for (Employee employee : employeeStacks){
             if (employeeStacks.isEmpty()){
-                System.out.println("Không có hồ sơ nào trong stack ");
+                System.out.println("No profile ");
                 break;
             } else if (checkEmployee.equals(employee.getEmployeeName())){
-                System.out.println("Tìm thấy nhân viên trong stack");
+                System.out.println("Employee found ....");
                 System.out.println(employee.toString());
                 check = false;
                 break;
             }
         }
         if (check){
-            System.out.println("Không tìm thấy nhân viên trong danh sách!");
+            System.out.println("Not found employee :( ");
         }
     }
 }

@@ -23,7 +23,7 @@ public class ServiceManage {
                 inputQuantityIncluded(), inputRentalType(), inputStandardVilla(), inputComfortableDescriptionVilla(),
                 inputFloorVilla(), inputAreaPoolVilla());
         servicesVillaList.add(villa);
-        ReadWriteFile.writeFile(fileVilla,villa.getId() + "," + villa.getNameService() + "," +
+        ReadWriteFile.writeFile(fileVilla, villa.getId() + "," + villa.getNameService() + "," +
                 villa.getAreaUsed() + "," + villa.getRentsCost() + "," + villa.getMaxPeople() + "," +
                 villa.getRentType() + "," + villa.getStandardRoomVilla() + "," + villa.getDescribeOtherVilla()
                 + "," + villa.getNumberFloorVilla() + "," + villa.getAreaPool());
@@ -46,23 +46,23 @@ public class ServiceManage {
         Room room = new Room(inputIdRoom(), inputNameServices(), inputAreaServices(), inputCostServices(), inputQuantityIncluded(),
                 inputRentalType(), inputAccompaniedService());
         servicesRoomList.add(room);
-        ReadWriteFile.writeFile(fileRoom,room.getId() + "," + room.getNameService()
-                        + "," + room.getAreaUsed() + "," + room.getRentsCost()
-                        + "," + room.getMaxPeople() + "," + room.getRentType()
-                        + "," + room.getFreeService());
+        ReadWriteFile.writeFile(fileRoom, room.getId() + "," + room.getNameService()
+                + "," + room.getAreaUsed() + "," + room.getRentsCost()
+                + "," + room.getMaxPeople() + "," + room.getRentType()
+                + "," + room.getFreeService());
     }
 
     //Phương thức hiện ra các Services
     public List<Villa> showVilla() {
         List<String[]> listVilla = ReadWriteFile.readFile(fileVilla);
         servicesVillaList.clear();
-        for(String[] villa1 : listVilla){
-            Villa villa = new Villa(villa1[0],villa1[1],villa1[2],villa1[3],villa1[4],villa1[5],villa1[6],
-                    villa1[7],villa1[8],villa1[9]);
+        for (String[] villa1 : listVilla) {
+            Villa villa = new Villa(villa1[0], villa1[1], villa1[2], villa1[3], villa1[4], villa1[5], villa1[6],
+                    villa1[7], villa1[8], villa1[9]);
             servicesVillaList.add(villa);
         }
         for (Villa villa : servicesVillaList) {
-                System.out.println(villa.showInfor());
+            System.out.println(villa.showInfor());
         }
         return servicesVillaList;
     }
@@ -70,11 +70,11 @@ public class ServiceManage {
     public List<House> showHouse() {
         List<String[]> listHouse = ReadWriteFile.readFile(fileHouse);
         servicesHouseList.clear();
-        for (String[] house : listHouse){
-            House house1 = new House(house[0],house[1],house[2],house[3],house[4],house[5],house[6],house[7],house[8]);
+        for (String[] house : listHouse) {
+            House house1 = new House(house[0], house[1], house[2], house[3], house[4], house[5], house[6], house[7], house[8]);
             servicesHouseList.add(house1);
         }
-        for (House house : servicesHouseList){
+        for (House house : servicesHouseList) {
             System.out.println(house.showInfor());
         }
         return servicesHouseList;
@@ -84,44 +84,41 @@ public class ServiceManage {
         List<String[]> listRoom = ReadWriteFile.readFile(fileRoom);
         servicesRoomList.clear();
         for (String[] room : listRoom) {
-            Room room1 = new Room(room[0],room[1],room[2],room[3],room[4],room[5],room[6]);
+            Room room1 = new Room(room[0], room[1], room[2], room[3], room[4], room[5], room[6]);
             servicesRoomList.add(room1);
         }
-        for (Room room : servicesRoomList){
+        for (Room room : servicesRoomList) {
             System.out.println(room.showInfor());
         }
         return servicesRoomList;
     }
 
     //Hiện Services không trùng lặp và theo tên
-    public void showVillaNotDuplicate(){
+    public void showVillaNotDuplicate() {
         List<String[]> listVilla = ReadWriteFile.readFile(fileVilla);
         Set<String> villaTreeSet = new TreeSet<>();
-        for( String[] villa : listVilla){
-
+        for (String[] villa : listVilla) {
             villaTreeSet.add(villa[1]);
         }
         System.out.println(villaTreeSet);
     }
 
-    public void showHouseNotDuplicate(){
+    public void showHouseNotDuplicate() {
         List<String[]> listHouse = ReadWriteFile.readFile(fileHouse);
         Set<String> houseTreeSet = new TreeSet<>();
-        for( String[] house : listHouse){
-
+        for (String[] house : listHouse) {
             houseTreeSet.add(house[1]);
         }
         System.out.println(houseTreeSet);
     }
 
-    public void showRoomNotDuplicate(){
+    public void showRoomNotDuplicate() {
         List<String[]> listRoom = ReadWriteFile.readFile(fileRoom);
         Set<String> roomTreeSet = new TreeSet<>();
-        for( String[] room : listRoom){
-
+        for (String[] room : listRoom) {
             roomTreeSet.add(room[1]);
         }
-            System.out.println(roomTreeSet);
+        System.out.println(roomTreeSet);
     }
 
     //Các phương thức để nhập vào
@@ -200,7 +197,7 @@ public class ServiceManage {
 
     private String inputFloorVilla() {
         System.out.println("Input floor of villa (Floor > 0) : ");
-        return Validate.isCheck(getScan().nextLine(),FLOOR_NUMBER);
+        return Validate.isCheck(getScan().nextLine(), FLOOR_NUMBER);
     }
 
     private String inputStandardHouse() {
@@ -215,7 +212,7 @@ public class ServiceManage {
 
     private String inputFloorHouse() {
         System.out.println("Input floor house (Floor > 0) :  ");
-        return Validate.isCheck(getScan().nextLine(),FLOOR_NUMBER);
+        return Validate.isCheck(getScan().nextLine(), FLOOR_NUMBER);
     }
 
     private String inputAreaPoolVilla() {
