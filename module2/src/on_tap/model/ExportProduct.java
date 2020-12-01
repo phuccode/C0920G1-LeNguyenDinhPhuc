@@ -4,7 +4,7 @@ public class ExportProduct extends Product{
     public String priceExport;
     public String nationalImported;
 
-    public ExportProduct(String idProduct, String codeProduct,String nameProduct, String priceProduct, String amountProduct,
+    public ExportProduct(int idProduct, String codeProduct,String nameProduct, String priceProduct, String amountProduct,
                          String producerProduct, String priceExport, String nationalImported) {
         super(idProduct, codeProduct,nameProduct, priceProduct, amountProduct, producerProduct);
         this.priceExport = priceExport;
@@ -38,8 +38,8 @@ public class ExportProduct extends Product{
     @Override
     public String toString() {
         return "Export Product: " + "\n" + super.toString() + "\n" +
-                "priceExport: '" + priceExport + '\n' +
-                "nationalImported='" + nationalImported + '\n'
+                "Price Export: " + priceExport + '\n' +
+                "National Imported: " + nationalImported + '\n'
                 + "--------------------------------";
     }
 }

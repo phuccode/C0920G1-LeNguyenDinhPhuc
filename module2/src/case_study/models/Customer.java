@@ -3,17 +3,18 @@ package case_study.models;
 import _12_java_collection_framework.thuc_hanh.comparable_comparator.Student;
 import case_study.models.Services;
 
-public class Customer implements Comparable<Customer>{
-    String customerName;
-    String birthday;
-    String gender;
-    String numID;
-    String numPhone;
-    String email;
-    String address;
-    String useService;
+public class Customer implements Comparable<Customer> {
+    protected String customerName;
+    protected String birthday;
+    protected String gender;
+    protected String numID;
+    protected String numPhone;
+    protected String email;
+    protected String address;
+    protected String useService;
 
-    public Customer( String customerName, String birthday, String gender, String numID, String numPhone, String email, String address, String useService) {
+    public Customer(String customerName, String birthday, String gender, String numID, String numPhone, String email,
+                    String address, String useService) {
         this.customerName = customerName;
         this.birthday = birthday;
         this.gender = gender;
@@ -33,8 +34,6 @@ public class Customer implements Comparable<Customer>{
         this.email = email;
         this.address = address;
     }
-
-    public Customer(){}
 
     public String getCustomerName() {
         return customerName;
@@ -108,7 +107,7 @@ public class Customer implements Comparable<Customer>{
     public String toString() {
         return "Customer: " + "\n" +
                 "Customer name: " + customerName + "\n" +
-                "Birthday: " + birthday +"\n" +
+                "Birthday: " + birthday + "\n" +
                 "Gender: " + gender + "\n" +
                 "CMND: " + numID + "\n" +
                 "Phone number: " + numPhone + "\n" +

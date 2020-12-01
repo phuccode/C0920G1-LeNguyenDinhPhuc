@@ -9,7 +9,7 @@ public class MainController {
     ProductManage productManage = new ProductManage();
 
     public void DisplayMenu(){
-        System.out.println("--CHƯƠNG TRÌNH QUẢN LÝ SẢN PHẨM");
+        System.out.println("--CHƯƠNG TRÌNH QUẢN LÝ SẢN PHẨM--");
         System.out.println("Chọn chức năng theo số (để tiếp tục): ");
         System.out.println("1. Thêm mới");
         System.out.println("2. Xóa");
@@ -24,11 +24,9 @@ public class MainController {
                 System.out.println("2. Thêm sản phẩm cho xuất khẩu");
                 switch (getScan().nextLine()){
                     case "1":
-                        productManage.addNewImported();
                         DisplayMenu();
                         break;
                     case "2":
-                        productManage.addNewExport();
                         DisplayMenu();
                         break;
                 }
@@ -37,8 +35,7 @@ public class MainController {
                 productManage.deleteImported();
                 break;
             case "3":
-                productManage.readDataExport();
-                productManage.readDataImported();
+//                productManage.readDataExport();
                 System.out.println("1. Xem danh sách sản phẩm nhậu khẩu");
                 System.out.println("2. Xem danh sách sản phẩm xuất khẩu");
                 switch (getScan().nextLine()){
@@ -47,7 +44,6 @@ public class MainController {
                         DisplayMenu();
                         break;
                     case "2":
-                        productManage.showExport();
                         DisplayMenu();
                         break;
                 }
@@ -59,7 +55,6 @@ public class MainController {
     }
 
     public Scanner getScan(){
-        Scanner input = new Scanner(System.in);
-        return input;
+        return new Scanner(System.in);
     }
 }

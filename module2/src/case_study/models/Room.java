@@ -3,7 +3,8 @@ package case_study.models;
 public class Room extends Services {
     String freeService;
 
-    public Room(String id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType, String freeService) {
+    public Room(String id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType,
+                String freeService) {
         super(id, nameService, areaUsed, rentsCost, maxPeople, rentType);
         this.freeService = freeService;
     }

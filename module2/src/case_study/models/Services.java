@@ -1,14 +1,15 @@
 package case_study.models;
 
 public abstract class Services {
-    String id;
-    String nameService;
-    String areaUsed;
-    String rentsCost;
-    String maxPeople;
-    String rentType;
+    private String id;
+    private String nameService;
+    private String areaUsed;
+    private String rentsCost;
+    private String maxPeople;
+    private String rentType;
 
-    public Services(String id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType) {
+    public Services(String id, String nameService, String areaUsed, String rentsCost, String maxPeople,
+                    String rentType) {
         this.id = id;
         this.nameService = nameService;
         this.areaUsed = areaUsed;

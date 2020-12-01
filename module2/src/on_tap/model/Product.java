@@ -1,14 +1,14 @@
 package on_tap.model;
 
 public abstract class Product {
-    public String idProduct;
+    public int idProduct;
     public String codeProduct;
     public String nameProduct;
     public String priceProduct;
     public String amountProduct;
     public String producerProduct;
 
-    public Product(String idProduct, String codeProduct, String nameProduct, String priceProduct, String amountProduct, String producerProduct) {
+    public Product(int idProduct, String codeProduct, String nameProduct, String priceProduct, String amountProduct, String producerProduct) {
         this.idProduct = idProduct;
         this.codeProduct = codeProduct;
         this.nameProduct = nameProduct;
@@ -35,11 +35,11 @@ public abstract class Product {
         this.producerProduct = producerProduct;
     }
 
-    public String getIdProduct() {
+    public int getIdProduct() {
         return idProduct;
     }
 
-    public void setIdProduct(String idProduct) {
+    public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
     }
 
@@ -72,11 +72,11 @@ public abstract class Product {
     @Override
     public String toString() {
         return "Product: " +
-                "idProduct: " + idProduct + '\n' +
-                "nameProduct: " + nameProduct + "\n" +
-                "codeProduct: '" + codeProduct + '\n'+
-                "priceProduct='" + priceProduct + '\n' +
-                "amountProduct='" + amountProduct + '\n' +
-                "producerProduct='" + producerProduct + '\n';
+                "Id Product: " + idProduct + '\n' +
+                "Name Product: " + nameProduct + "\n" +
+                "Code Product: '" + codeProduct + '\n'+
+                "Price Product='" + priceProduct + '\n' +
+                "Amount Product='" + amountProduct + '\n' +
+                "Producer Product='" + producerProduct + '\n';
     }
 }

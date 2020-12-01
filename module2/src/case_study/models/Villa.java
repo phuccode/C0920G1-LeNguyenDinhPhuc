@@ -6,7 +6,8 @@ public class Villa extends Services implements Comparable<Villa>{
     String areaPool;
     String numberFloorVilla;
 
-    public Villa(String id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType, String standardRoomVilla, String describeOtherVilla, String areaPool, String numberFloorVilla) {
+    public Villa(String id, String nameService, String areaUsed, String rentsCost, String maxPeople, String rentType
+            , String standardRoomVilla, String describeOtherVilla, String areaPool, String numberFloorVilla) {
         super(id, nameService, areaUsed, rentsCost, maxPeople, rentType);
         this.standardRoomVilla = standardRoomVilla;
         this.describeOtherVilla = describeOtherVilla;

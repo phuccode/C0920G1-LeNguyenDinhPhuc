@@ -41,17 +41,16 @@ public class CustomerManage {
         customerList = showInformationCustomers();
         System.out.println("Input your name you want remove: ");
         String input = getScan().nextLine();
-        ReadWriteFile.removeFile(fileCustomer);
         for (int i = 0; i < customerList.size(); i++) {
             if (input.equals(customerList.get(i).getCustomerName())) {
+                ReadWriteFile.removeFile(fileCustomer);
                 customerList.remove(i);
-                i--;
+                for (Customer customer : customerList) {
+                    ReadWriteFile.writeFile(fileCustomer, customer.getCustomerName() + "," + customer.getBirthday()
+                            + "," + customer.getGender() + "," + customer.getNumID() + "," + customer.getNumPhone()
+                            + "," + customer.getEmail() + "," + customer.getAddress());
+                }
             }
-        }
-        for (Customer customer : customerList) {
-            ReadWriteFile.writeFile(fileCustomer, customer.getCustomerName() + "," + customer.getBirthday()
-                    + "," + customer.getGender() + "," + customer.getNumID() + "," + customer.getNumPhone()
-                    + "," + customer.getEmail() + "," + customer.getAddress());
         }
     }
 
