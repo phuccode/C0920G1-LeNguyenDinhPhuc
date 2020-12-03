@@ -1,7 +1,8 @@
-
+drop database if exists case_study;
 create database case_study;
 use case_study;
 
+-- task 1 --
 create table loaikhach (
   id_loai_khach int ,
   ten_loai_khach varchar(45) ,
@@ -24,11 +25,11 @@ create table khachhang (
   foreign key (id_loai_khach) references loaikhach(id_loai_khach)
   );
   
-  insert into khachhang value (1,1,'Phúc Lê', 11/11/1999, '123', '123' , 'aaa','11 aa'),
-  (2,2,'Thế Anh', 11/11/1999, '234', '123' , 'aaa','11 aa'),
-  (3,3,'Minh Chiến', 11/11/1999, '345', '223' , 'bbb','12 aa'),
-  (4,4,'Hiếu', 11/11/1999, '111', '567' , 'ccc','13 aa'),
-  (5,5,'Phước', 11/11/1999, '222', '789' , 'ddd','14 aa');
+  insert into khachhang value (1,1,'Phúc Lê', 11/11/1999, '123', '123' , 'aaa','Đà Nẵng'),
+  (2,2,'Thế Anh', 11/11/1999, '234', '123' , 'aaa','Quảng Trị'),
+  (3,3,'Minh Chiến', 11/11/1999, '345', '223' , 'bbb','Đà Nẵng'),
+  (4,4,'Hiếu', 11/11/1999, '111', '567' , 'ccc','Huế'),
+  (5,5,'Phước', 11/11/1999, '222', '789' , 'ddd','Hà Nội');
   select * from khachhang;
   
   create table kieuthue (
