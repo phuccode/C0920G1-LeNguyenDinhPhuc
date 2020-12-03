@@ -26,8 +26,8 @@ where id_khach_hang = 5;
 
 -- task 2 --
 select ho_ten from nhanvien
- where ho_ten 
- like 'h%' or ho_ten like 'k%' or ho_ten like 't%';
+ where (ho_ten 
+ like 'h%' or ho_ten like 'k%' or ho_ten like 't%') and char_length(ho_ten) >= 4;
  
  -- task 3 --
  select * from khachhang 
