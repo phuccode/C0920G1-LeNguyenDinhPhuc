@@ -15,21 +15,21 @@ select * from loaikhach;
 create table khachhang (
   id_khach_hang int ,
   id_loai_khach int ,
-  ho_ten varchar(45) ,
+  ho_ten_khach_hang varchar(45) ,
   ngay_sinh date ,
   so_CMND varchar(45) ,
-  SDT varchar(45) ,
+  SDT_kh varchar(45) ,
   email varchar(45) ,
   dia_chi varchar(45) ,
   primary key (id_khach_hang),
   foreign key (id_loai_khach) references loaikhach(id_loai_khach)
   );
   
-  insert into khachhang value (1,1,'Phúc Lê', 11/11/1999, '123', '123' , 'aaa','Đà Nẵng'),
-  (2,2,'Thế Anh', 11/11/1999, '234', '123' , 'aaa','Quảng Trị'),
-  (3,3,'Minh Chiến', 11/11/1999, '345', '223' , 'bbb','Đà Nẵng'),
-  (4,4,'Hiếu', 11/11/1999, '111', '567' , 'ccc','Huế'),
-  (5,5,'Phước', 11/11/1999, '222', '789' , 'ddd','Hà Nội');
+  insert into khachhang value (1,1,'Phúc Lê', '1999-11-11', '123', '123' , 'aaa','Đà Nẵng'),
+  (2,1,'Thế Anh', '2007-11-11', '234', '123' , 'aaa','Quảng Ngãi'),
+  (3,1,'Minh Chiến', '1999-11-11', '345', '223' , 'bbb','Đà Nẵng'),
+  (4,4,'Hiếu','2010-11-11', '111', '567' , 'ccc','Huế'),
+  (5,5,'Phước', '1999-11-11', '222', '789' , 'ddd','Hà Nội');
   select * from khachhang;
   
   create table kieuthue (
@@ -120,14 +120,14 @@ create table vitri(
  
   create table nhanvien(
   id_nhan_vien int primary key,
-  ho_ten varchar(45),
+  ho_ten_nhan_vien varchar(45),
   id_vi_tri int,
   id_trinh_do int,
   id_bo_phan int,
   ngay_sinh date,
   so_CMND varchar(45),
   luong varchar(45),
-  SDT varchar(45),
+  SDT_nv varchar(45),
   email varchar(45),
   dia_chi varchar(45),
   foreign key (id_vi_tri) references vitri(id_vi_tri),
@@ -135,12 +135,12 @@ create table vitri(
   foreign key (id_bo_phan) references bophan(id_bo_phan)
   );
   
-  insert into nhanvien value (1, 'Anh', 1, 1, 1, 11/12/1989, '111', '6000', '123', 'aaa', '11 aaa'),
-  (2, 'Chiến', 2, 2, 2, 11/10/1999, '111', '6000', '123', 'aaa', '11 aaa'),
-  (3, 'Hiếu', 3, 3, 3, 10/12/1979, '111', '6000', '123', 'aaa', '11 aaa'),
-  (4, 'Hưng', 4, 4, 4, 13/12/1999, '111', '6000', '123', 'aaa', '11 aaa'),
-  (5, 'Khánh', 5, 4, 4, 16/12/1995, '111', '6000', '123', 'aaa', '11 aaa'),
-  (6, 'Phúc', 6, 2, 2, 08/11/1999, '111', '6000', '123', 'aaa', '11 aaa');
+  insert into nhanvien value (1, 'Anh', 1, 1, 1, '2000-12-12', '111', '6000', '123', 'aaa', '11 aaa'),
+  (2, 'Chiến', 2, 2, 2, '1999-12-12', '111', '6000', '123', 'aaa', '11 aaa'),
+  (3, 'Hiếu', 3, 3, 3, '1998-12-12', '111', '6000', '123', 'aaa', '11 aaa'),
+  (4, 'Hưng', 4, 4, 4,'1997-12-12', '111', '6000', '123', 'aaa', '11 aaa'),
+  (5, 'Khánh', 5, 4, 4,'1994-12-12', '111', '6000', '123', 'aaa', '11 aaa'),
+  (6, 'Phúc', 6, 2, 2,'1998-12-12', '111', '6000', '123', 'aaa', '11 aaa');
   select * from nhanvien;
   
    create table hopdong(
@@ -157,10 +157,15 @@ create table vitri(
   foreign key (id_dich_vu) references dichvu(id_dich_vu)
   );
   alter table hopdong drop column tong_tien;
-  insert into hopdong value(1,1,1,1,20/11/2020,22/11/2020,200),
-  (2,2,2,2,20/11/2020,22/11/2020,500),
-  (3,3,3,3,20/11/2020,22/11/2020,200),
-  (4,4,4,4,20/11/2020,22/11/2020,200)
+  insert into hopdong value(1,1,1,1,'2020-12-12','2020-12-22',200),
+  (2,2,2,2,'2018-12-12','2018-12-22',500),
+  (3,3,3,3,'2017-12-12','2017-12-22',200),
+  (4,4,4,4,'2020-12-23','2020-12-24',200),
+   (5,3,3,3,'2018-12-12','2018-12-22',200),
+   (6,3,3,3,'2019-12-12','2020-12-22',200),
+   (7,3,3,3,'2020-12-12','2020-12-22',200),
+	(8,4,4,4,'2019-08-12','2020-12-22',200),
+    (9,4,4,4,'2018-09-12','2018-09-13',200)
   ;
   select * from hopdong;
 create table dichvudikem(
