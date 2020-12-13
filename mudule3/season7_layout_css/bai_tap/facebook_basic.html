@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, Tahoma;
+            font-size: 12px;
+            padding-top: 80px;
+        }
+
+        #main {
+            width: 100%;
+            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        #head {
+            height: 80px;
+            background-color: #F5F5F5;
+            border: 1px solid #CDCDCD;
+            margin-bottom: 5px;
+            /*position: relative;*/
+            width: 100%;
+            position: fixed;
+            box-shadow:1px 3px 6px gray;
+            top: 0;
+        }
+
+        #head img {
+
+            width: 50px;
+            height: 50px;
+            float: left;
+        }
+
+        #head input {
+            float: left;
+            left: 70px;
+        }
+
+
+        #left {
+            position: fixed;
+            width: 20%;
+            min-height: 400px;
+            border: 1px solid #CDCDCD;
+            float: left;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        #content {
+            position: relative;
+            left: 25%;
+            width: 50%;
+            min-height: 400px;
+            border: 1px solid #CDCDCD;
+            float: left;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            z-index: -1000;
+        }
+
+        #content img {
+            position: relative;
+            width: 100%;
+
+        }
+
+        #right {
+            position: fixed;
+            position: -webkit-sticky;
+            width: 20%;
+            min-height: 400px;
+            border: 1px solid #CDCDCD;
+            float: right;
+            margin-bottom: 5px;
+            right: 0;
+        }
+
+        #right iframe {
+            position: relative;
+            width: 100%;
+        }
+
+        body {
+            font-family: Arial;
+        }
+
+        #left ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        #left li {
+            list-style: none;
+            position: relative;
+            width: 100%;
+            height: 30px;
+            padding: 0;
+            background-color: whitesmoke;
+            line-height: 30px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #left li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #left li:hover {
+            background-color: whitesmoke;
+        }
+
+        #left ul ul {
+            position: absolute;
+            top: 0;
+            left: 140px;
+            visibility: hidden;
+        }
+
+        #left ul li:hover ul {
+            visibility: visible;
+        }
+
+        #right ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        #right li {
+            list-style: none;
+            position: relative;
+            width: 89%;
+            height: 30px;
+            padding: 0 20px;
+            background-color: whitesmoke;
+            line-height: 30px;
+            cursor: pointer;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="head">
+        <div>
+            <img src="https://www.iconninja.com/files/245/45/195/facebook-media-social-like-network-fb-icon.svg">
+            <input type="text">
+        </div>
+    </div>
+    <div id="left">
+        <ul>
+            <li><a href="#">Trang</a>
+                <ul>
+                    <li><a href="#">Codegym 1</a></li>
+                    <li><a href="#">C Programming</a></li>
+                    <li><a href="#">Codegym 2</a></li>
+                    <li><a href="#">Codegym 3</a></li>
+                    <li><a href="#">Codegym 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Nhóm </a>
+                <ul>
+                    <li><a href="#">Codegym 1</a></li>
+                    <li><a href="#">Codegym 2</a></li>
+                    <li><a href="#">Codegym 3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Bạn bè</a></li>
+            <li><a href="#">Messager</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <img src="D:\Codegym\C0920G1-LeNguyenDinhPhuc\mudule3\season7_layout_css\bai_tap\fb.png">
+    </div>
+    <div id="right">
+        <div id="ads">
+            <iframe src="https://www.youtube.com/embed/_ZaRQmLuChc?start=259?autoplay=1" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <div>
+            <ul>
+                <li><a href="#">Thế anh</a></li>
+                <li><a href="#">Phúc ngu</a></li>
+                <li><a href="#">Ngọc Anh</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
