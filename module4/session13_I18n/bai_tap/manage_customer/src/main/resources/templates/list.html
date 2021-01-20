@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<h1 th:text="#{message.homePage}"></h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer,status:${customerList}">
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:switch="${customer.gender}">
+            <span th:case="0">Female</span>
+            <span th:case="1">Male</span>
+            <span th:case="*">LGBT</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

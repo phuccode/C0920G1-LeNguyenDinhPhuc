@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>List Customer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<center><h1>List Customer</h1></center>
+<h3 th:if="${successMsg}" th:text="${successMsg}" style="color: red"></h3>
+
+<!-- Create modal -->
+<div style="display: flex; justify-content: space-around">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="btnModalCreate">
+    Create
+    </button>
+    <form action="/customer/search">
+    <label>
+        <input type="text" th:name="inputSearch">
+    </label>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        <i class="fas fa-search " style="font-size:24px;"></i></button>
+    </form>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--            </div>-->
+            <!-- Modal body -->
+            <div class="modal-body">
+                Modal body..
+            </div>
+<!--            &lt;!&ndash; Modal footer &ndash;&gt;-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+<!--                <button type="submit" class="btn btn-danger" data-dismiss="modal">Save</button>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Customer type</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Gender</th>
+        <th>Id card</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer,status:${customerList}">
+        <td id="name" th:text="${customer.customerId}"></td>
+        <td th:text="${customer.customerTypeId.getCustomerTypeName()}"></td>
+        <td th:text="${customer.customerName}"></td>
+        <td th:text="${customer.customerBirthday}"></td>
+        <td th:switch="${customer.customerGender}">
+            <span th:case="0">Female</span>
+            <span th:case="1">Male</span>
+            <span th:case="*">LGBT</span>
+        </td>
+        <td th:text="${customer.customerIdCard}"></td>
+        <td th:text="${customer.customerPhone}"></td>
+        <td th:text="${customer.customerEmail}"></td>
+        <td th:text="${customer.customerAddress}"></td>
+        <td>
+            <button class="btn btn-primary btnModalEdit" data-target="#myModal">Edit</button>
+            <input type="hidden" th:value="${customer.customerId}">
+<!--            <a th:href="@{/customer/delete/{id}(id=${customer.customerId})}">Delete</a>-->
+            <button class="btn btn-danger btnModalDelete" data-target="#myModal">Delete</button>
+            <input type="hidden" th:value="${customer.customerId}">
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div>-->
+<!--    <a th:href="@{'/customer'(page=${customerList.number - 1})}" th:if="${customerList.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>-->
+<!--    <a th:href="@{'/customer'(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}">Next</a>-->
+<!--</div>-->
+
+<nav aria-label="Page navigation example" style="float: right; margin-right: 25px">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" th:href="@{/customer(page = 0, searchNameCustomer = ${stringAfterCheck})}">Prevous</a></li>
+        <th:block th:each="i: ${#numbers.sequence(0, customerList.totalPages - 1)}">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/customer(page=${i},searchNameCustomer=${stringAfterCheck})}" th:text="${i + 1}"></a>
+            </li>
+        </th:block>
+
+        <li class="page-item"><a class="page-link" th:href="@{/customer(page = ${customerList.totalPages - 1}, searchNameCustomer = ${stringAfterCheck})}">Next</a></li>
+    </ul>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--Create-->
+<script>
+    $(document).ready(function () {
+        $("#btnModalCreate").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/customer/create/",
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#myModal").modal('show');
+                }
+            });
+        });
+    });
+</script>
+<!--Edit-->
+<script>
+    $(document).ready(function () {
+        $(".btnModalEdit").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/customer/edit/" + $(this).next().val(),
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#myModal").modal('show');
+                }
+            });
+        });
+    });
+</script>
+<!--Delete-->
+<script>
+    $(document).ready(function () {
+        $(".btnModalDelete").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "customer/delete/" + $(this).next().val(),
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#myModal").modal('show');
+                }
+            });
+        });
+    });
+</script>
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $(".btnModalDelete").click(function(){-->
+<!--            if(confirm("Are you sure you want to delete this Record?")){-->
+<!--                $.ajax({-->
+<!--                    type: "GET",-->
+<!--                    url: "/customer/delete/" + $(this).next().val(),-->
+<!--                    dataType: "HTML",-->
+<!--                    success: function(){-->
+<!--                    }-->
+<!--                });-->
+<!--            }-->
+<!--            return false;-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>
