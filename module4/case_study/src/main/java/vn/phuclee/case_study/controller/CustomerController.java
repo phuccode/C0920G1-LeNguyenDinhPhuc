@@ -25,7 +25,7 @@ public class CustomerController {
 
     @GetMapping(value = {""})
     public String customerList(@PageableDefault(size = 3) Pageable pageable,
-         @RequestParam Optional<String> searchNameCustomer, Model model, RedirectAttributes redirectAttributes){
+         @RequestParam Optional<String> searchNameCustomer, Model model){
         String stringAfterCheck = "";
         if (!searchNameCustomer.isPresent()){
             model.addAttribute("customerList", customerService.findAll(pageable));
@@ -47,7 +47,7 @@ public class CustomerController {
     @PostMapping(value = "/create")
     public String createCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         customerService.save(customer);
-        redirectAttributes.addFlashAttribute("successMsg", "Create customer: "+customer.getCustomerName() +" success!");
+        redirectAttributes.addFlashAttribute("successMsg", "Welcome customer: "+customer.getCustomerName());
         return "redirect:/customer";
     }
 
@@ -66,7 +66,7 @@ public class CustomerController {
     }
 
     @GetMapping("/search")
-    public ModelAndView searchByText(@RequestParam String inputSearch, @PageableDefault(value = 2)Pageable pageable){
+    public ModelAndView searchByText(@RequestParam String inputSearch, @PageableDefault(value = 3)Pageable pageable){
         return new ModelAndView("/customer/list", "customerList", customerService.search(inputSearch, pageable));
     }
 
