@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <title>Create Question</title>
+</head>
+<body>
+<center><h1>Tao moi cau hoi</h1></center>
+<center>
+    <form action="/question/create" method="post" th:object="${question}" style="width: 30%">
+        <div>
+            <label>Tieu de:</label>
+            <input class="form-control" type="text"  th:field="*{title}"/>
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red"></span><br/>
+        </div>
+        <div>
+            <label>Noi Dung:</label>
+            <input type="text" class="form-control" th:field="*{question}"/>
+        </div>
+        <div>
+            <label>Loai cau hoi</label>
+            <select th:field="*{idQuestionType.idQuestionType}" class="form-control" id="Order" name="Order">
+                <option th:each="questionType : ${questionTypeList}"
+                        th:value="${questionType.idQuestionType}"
+                        th:text="${questionType.nameQuestionType}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label>Ngay dang</label>
+            <input type="date" class="form-control" th:field="*{dateCreate}"  />
+            <span th:if="${#fields.hasErrors('dateCreate')}" th:errors="*{dateCreate}"></span><br/>
+        </div>
+        <div>
+            <label>Nguoi hoi</label>
+            <select th:field="*{userCreate.idUser}" class="form-control" id="Order1" name="Order">
+                <option th:each="user : ${userList}"
+                        th:value="${user.idUser}"
+                        th:text="${user.nameUser}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label>Nguoi tra loi</label>
+            <select th:field="*{userFeedback.idUser}" class="form-control" id="Order2" name="Order">
+                <option th:each="user : ${userList}"
+                        th:value="${user.idUser}"
+                        th:text="${user.nameUser}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label>Tinh trang:</label>
+            <input type="text" class="form-control" th:field="*{status}"  />
+            <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" style="color: red"></span><br/>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 10px">
+            <button style="margin-right: 3px" class="btn btn-primary" type="submit" value="Create">Create</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+    </form>
+</center>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>Create Contract</title>
+</head>
+<body>
+<center><h1>Create Contract</h1>
+    <h3 th:if="${successMsg}" th:text="${successMsg}" style="color: red"></h3></center>
+<center>
+    <form action="/contract/create" method="post" th:object="${contract}" style="width: 30%">
+        <div class="form-group">
+            <label>Start Date:</label>
+            <input class="form-control" type="date"  th:field="*{contractStartDate}"/>
+        </div>
+        <div class="form-group">
+            <label>End Date:</label>
+            <input class="form-control" type="date"  th:field="*{contractEndDate}"/>
+        </div>
+        <div class="form-group">
+            <label>Deposit:</label>
+            <input class="form-control" type="text"  th:field="*{contractDeposit}"/>
+        </div>
+        <div class="form-group">
+            <label>Total money:</label>
+            <input class="form-control" type="text" th:field="*{contractTotalMoney}" >
+        </div>
+        <div class="form-group">
+            <label>Employee:</label>
+            <select th:field="*{employeeId.employeeId}" class="form-control" id="Order" name="Order">
+                <option th:each="employee : ${employeeList}"
+                        th:value="${employee.employeeId}"
+                        th:text="${employee.employeeName}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Customer:</label>
+            <select th:field="*{customerId.customerId}" class="form-control" id="Order1" name="Order1">
+                <option th:each="customer : ${customerList}"
+                        th:value="${customer.customerId}"
+                        th:text="${customer.customerName}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Service:</label>
+            <select th:field="*{serviceId.serviceId}" class="form-control" id="Order2" name="Order1">
+                <option th:each="service : ${serviceList}"
+                        th:value="${service.serviceId}"
+                        th:text="${service.serviceName}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"> Create </button>
+    </form>
+</center>
+</body>
+</html>

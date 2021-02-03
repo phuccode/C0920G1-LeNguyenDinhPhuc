@@ -7,7 +7,7 @@
 <form action="/customer/create" method="post" th:object="${customer}">
     <div>
         <label>Name:</label>
-        <input class="form-control" type="text"  th:field="*{customerName}"/>
+        <input class="form-control" type="text"  th:field="*{customerName}"/><br/>
     </div>
     <div>
         <label>Customer Type</label>
@@ -20,7 +20,7 @@
     </div>
     <div>
         <label>Birthday:</label>
-        <input type="text" class="form-control" th:field="*{customerBirthday}"/>
+        <input type="date" class="form-control" th:field="*{customerBirthday}"/>
     </div>
     <div class="form-check form-check-inline">
         <label>Gender:    </label>

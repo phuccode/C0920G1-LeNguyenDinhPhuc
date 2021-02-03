@@ -12,6 +12,7 @@ import vn.phuclee.case_study.model.Customer;
 import vn.phuclee.case_study.services.customer.CustomerService;
 import vn.phuclee.case_study.services.customer.CustomerTypeService;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -45,7 +46,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/create")
-    public String createCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
+    public String createCustomer(@Valid @ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
         customerService.save(customer);
         redirectAttributes.addFlashAttribute("successMsg", "Welcome customer: "+customer.getCustomerName());
         return "redirect:/customer";

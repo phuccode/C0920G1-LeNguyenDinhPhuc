@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>View Question</title>
+</head>
+<body>
+<center>
+    <h1>View Question</h1>
+    <form action="/question/edit" method="post" th:object="${question}" style="width: 30%">
+        <div>
+            <label>Title:</label>
+            <input class="form-control" type="text"  th:field="*{title}"/>
+        </div>
+        <div>
+            <label>Question:</label>
+            <input type="text" class="form-control" th:field="*{question}"/>
+        </div>
+        <div>
+            <label>Date Create:</label>
+            <input type="text" class="form-control" th:field="*{dateCreate}"/>
+        </div>
+        <div>
+            <label>Status:</label>
+            <input type="text" class="form-control" th:field="*{status}"/>
+        </div>
+    </form>
+</center>
+</body>
+</html>

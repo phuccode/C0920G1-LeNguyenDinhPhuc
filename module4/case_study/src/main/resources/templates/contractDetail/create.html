@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>Create Contract Detail</title>
+</head>
+<body>
+<center><h1>Create Contract Detail</h1>
+    <h3 th:if="${successMsg}" th:text="${successMsg}" style="color: red"></h3></center>
+<center>
+    <form action="/contractDetail/create" method="post" th:object="${contract}" style="width: 30%">
+        <div class="form-group">
+            <label>Contract:</label>
+            <select th:field="*{contractId.contractId}" class="form-control" id="Order" name="Order">
+                <option th:each="contract : ${contractList}"
+                        th:value="${contract.contractId}"
+                        th:text="${contract.contractId}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Attach Service:</label>
+            <select th:field="*{attachServiceId.attachServiceId}" class="form-control" id="Order1" name="Order1">
+                <option th:each="attach : ${attachList}"
+                        th:value="${attach.attachServiceId}"
+                        th:text="${attach.attachServiceName}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input class="form-control" type="text" th:field="*{quantity}" >
+        </div>
+        <button type="submit" class="btn btn-primary"> Create </button>
+    </form>
+</center>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>Question List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<center><h1>Danh sach cau hoi</h1></center>
+<!--<h3 th:if="${successMsg}" th:text="${successMsg}" style="color: red"></h3>-->
+
+<div style="display: flex; justify-content: space-around">
+    <a th:href="@{/question/create}" class="btn btn-primary">Create</a>
+    <form action="/question/search">
+        <label>
+            <input type="text" th:name="inputSearch">
+        </label>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Find</button>
+    </form>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tieu de</th>
+        <th>Loai Cau Hoi</th>
+        <th>Ngay Dang</th>
+        <th>Nguoi Hoi</th>
+        <th>Nguoi Dap</th>
+        <th>Tinh Trang</th>
+        <th>Tinh Nang</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question,status:${questionList}">
+        <td id="name" th:text="${question.idQuestion}"></td>
+        <td th:text="${question.title}"></td>
+        <td th:text="${question.idQuestionType.getNameQuestionType()}"></td>
+        <td th:text="${question.dateCreate}"></td>
+        <td th:text="${question.userCreate.nameUser}"></td>
+        <td th:text="${question.userFeedback.nameUser}"></td>
+        <td th:text="${question.status}"></td>
+        <td>
+            <a class="btn btn-primary " th:href="@{/question/edit/{id}(id=${question.idQuestion})}">View</a>
+
+            <button class="btn btn-danger btnModalDelete" data-target="#myModal">Delete</button>
+            <input type="hidden" th:value="${question.idQuestion}">
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example" style="float: right; margin-right: 25px">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" th:href="@{/question(page = 0)}">Previous</a></li>
+        <th:block th:each="i: ${#numbers.sequence(0, questionList.totalPages - 1)}">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/question(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+        </th:block>
+
+        <li class="page-item"><a class="page-link" th:href="@{/question(page = ${questionList.totalPages - 1})}">Next</a></li>
+    </ul>
+</nav>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                Modal body..
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--Delete-->
+<script>
+    $(document).ready(function () {
+        $(".btnModalDelete").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "question/delete/" + $(this).next().val(),
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#myModal").modal('show');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

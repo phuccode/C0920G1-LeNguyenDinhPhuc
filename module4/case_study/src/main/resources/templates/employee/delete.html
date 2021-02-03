@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>Delete Employee</title>
+</head>
+<body>
+<form action="/employee/delete"  method="post" th:object="${employee}">
+    <input type="hidden" th:value="${employee.employeeId}" name="idDelete">
+    <span th:text=" 'Do you want delete ' + ${employee.employeeName} "></span>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px">
+        <button style="margin-right: 3px" class="btn btn-primary" type="submit" value="Yes">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+    </div>
+</form>
+</body>
+</html>

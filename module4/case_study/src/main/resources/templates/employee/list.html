@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<center><h1>Employee List</h1></center>
+<h3 th:if="${successMsg}" th:text="${successMsg}" style="color: red"></h3>
+
+<div style="display: flex; justify-content: space-around">
+    <a th:href="@{/employee/create}" class="btn btn-primary">Create</a>
+    <form action="/employee/search">
+        <label>
+            <input type="text" th:name="inputSearch">
+        </label>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <i class="fas fa-search " style="font-size:24px;"></i></button>
+    </form>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Id card</th>
+        <th>Salary</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Position</th>
+        <th>Education Degree</th>
+        <th>Division</th>
+        <th>User Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee,status:${employeeList}">
+        <td id="name" th:text="${employee.employeeId}"></td>
+        <td th:text="${employee.employeeName}"></td>
+        <td th:text="${employee.employeeBirthday}"></td>
+        <td th:text="${employee.employeeIdCard}"></td>
+        <td th:text="${employee.employeeSalary}"></td>
+        <td th:text="${employee.employeePhone}"></td>
+        <td th:text="${employee.employeeEmail}"></td>
+        <td th:text="${employee.employeeAddress}"></td>
+        <td th:text="${employee.positionId.getPositionName()}"></td>
+        <td th:text="${employee.divisionId.getDivisionName()}"></td>
+        <td th:text="${employee.educationDegreeId.getEducationDegreeName()}"></td>
+        <td th:text="${employee.userName.getUsername()}"></td>
+        <td>
+            <a class="btn btn-primary " th:href="@{/employee/edit/{id}(id=${employee.employeeId})}">Edit</a>
+
+            <button class="btn btn-danger btnModalDelete" data-target="#myModal">Delete</button>
+            <input type="hidden" th:value="${employee.employeeId}">
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example" style="float: right; margin-right: 25px">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" th:href="@{/employee(page = 0)}">Previous</a></li>
+        <th:block th:each="i: ${#numbers.sequence(0, employeeList.totalPages - 1)}">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/employee(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+        </th:block>
+
+        <li class="page-item"><a class="page-link" th:href="@{/employee(page = ${employeeList.totalPages - 1})}">Next</a></li>
+    </ul>
+</nav>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                Modal body..
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--Delete-->
+<script>
+    $(document).ready(function () {
+        $(".btnModalDelete").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "employee/delete/" + $(this).next().val(),
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#myModal").modal('show');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

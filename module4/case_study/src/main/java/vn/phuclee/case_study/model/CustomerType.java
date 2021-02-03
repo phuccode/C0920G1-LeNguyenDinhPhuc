@@ -40,4 +40,5 @@ public class CustomerType {
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
+
 }

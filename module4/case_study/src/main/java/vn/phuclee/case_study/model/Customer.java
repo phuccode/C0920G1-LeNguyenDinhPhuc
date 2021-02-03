@@ -1,8 +1,11 @@
 package vn.phuclee.case_study.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import vn.phuclee.case_study.annotation.Phone;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -20,9 +23,15 @@ public class Customer {
     private String customerBirthday;
     private int customerGender;
     private String customerIdCard;
+
+    @Size(min = 10, max = 10)
+    @Phone
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
+
+    @OneToMany(mappedBy = "customerId",cascade = CascadeType.ALL)
+    private List<Contract> contracts;
 
     public Customer() {
     }
@@ -97,5 +106,13 @@ public class Customer {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
     }
 }

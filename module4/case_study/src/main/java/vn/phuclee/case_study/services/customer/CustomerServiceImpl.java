@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import vn.phuclee.case_study.model.Customer;
 import vn.phuclee.case_study.repository.customer.CustomerRepository;
 
+import java.util.List;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -16,6 +18,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Page<Customer> findAll(Pageable pageable) {
         return customerRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 
     @Override

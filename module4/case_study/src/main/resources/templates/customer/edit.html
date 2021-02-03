@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/layout::head}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Customer</title>
 </head>
 <body>
 <form action="/customer/edit" method="post" th:object="${customer}">
@@ -22,7 +22,7 @@
     </div>
     <div>
         <label>Birthday:</label>
-        <input type="text" class="form-control" th:field="*{customerBirthday}"/>
+        <input type="date" class="form-control" th:field="*{customerBirthday}"/>
     </div>
     <div>
         <label class="form-check form-check-inline">Gender:</label>

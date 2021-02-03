@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+    <meta charset="UTF-8">
+    <title>Create Service</title>
+</head>
+<body>
+<center><h1>Create Service</h1>
+    <h3 th:if="${successMsg}" th:text="${successMsg}" style="color: red"></h3></center>
+<center>
+<form action="/service/create" method="post" th:object="${service}" style="width: 30%">
+    <div class="form-group">
+        <label>Name:</label>
+        <input class="form-control" type="text"  th:field="*{serviceName}"/>
+    </div>
+    <div class="form-group">
+        <label>Area:</label>
+        <input class="form-control" type="text"  th:field="*{serviceArea}"/>
+    </div>
+    <div class="form-group">
+        <label>Cost:</label>
+        <input class="form-control" type="text"  th:field="*{serviceCost}"/>
+    </div>
+    <div class="form-group">
+        <label>Max people</label>
+        <input class="form-control" type="text" th:field="*{serviceMaxPeople}" >
+    </div>
+    <div class="form-group">
+        <label>Service Type</label>
+        <select th:field="*{serviceTypeId.serviceTypeId}" class="form-control" id="Order" name="Order">
+            <option th:each="serviceType : ${serviceType}"
+                    th:value="${serviceType.serviceTypeId}"
+                    th:text="${serviceType.serviceTypeName}">
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Rent Type</label>
+        <select th:field="*{rentTypeId.rentTypeId}" class="form-control" id="Order1" name="Order1">
+            <option th:each="rentType : ${rentType}"
+                    th:value="${rentType.rentTypeId}"
+                    th:text="${rentType.rentTypeName}">
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Standard Room</label>
+        <input class="form-control" type="text" th:field="*{standardRoom}" >
+    </div>
+    <div class="form-group">
+        <label>Description Other Convenience</label>
+        <input class="form-control" type="text" th:field="*{descriptionOtherConvenience}" >
+    </div>
+    <div class="form-group">
+        <label>Pool Area</label>
+        <input class="form-control" type="text" th:field="*{poolArea}" >
+    </div>
+    <div class="form-group">
+        <label>Number Of Floors</label>
+        <input class="form-control" type="text" th:field="*{numberOfFloors}" >
+    </div>
+    <button type="submit" class="btn btn-primary"> Create </button>
+</form>
+</center>
+</body>
+</html>
