@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  article = {
-    title: 'The Evolution of Async JavaScript: From Callbacks, to Promises, to Async/Await',
-    url: 'https://medium.freecodecamp.org/the-evolution-of-async-javascript-from-callbacks-to-promises-to-async-await-e73b047f2f40'
-  };
+  // article = {
+  //   title: 'The Evolution of Async JavaScript: From Callbacks, to Promises, to Async/Await',
+  //   url: 'https://medium.freecodecamp.org/the-evolution-of-async-javascript-from-callbacks-to-promises-to-async-await-e73b047f2f40'
+  // };
 
   articles = [
     {
@@ -37,8 +37,12 @@ export class AppComponent {
   //   this.article.title = (document.getElementById('article-title') as HTMLInputElement).value;
   //   this.article.url = (document.getElementById('article-url') as HTMLInputElement).value;
   // }
+  title: string;
+  url: string;
   addArticle(){
-    
+    this.articles.push({title: this.title, url: this.url});
+    this.title = undefined;
+    this.url = undefined;
   }
 }
 
