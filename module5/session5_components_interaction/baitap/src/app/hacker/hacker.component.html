@@ -1,0 +1,33 @@
+<div class="header-container">
+  <p style="font-weight: bold">Hacker News</p>
+  <a class="header-container-header" href="#">new</a> |
+  <a href="#">past</a>|
+  <a href="#">comments</a> |
+  <a href="#">ask</a> |
+  <a href="#">jobs</a> |
+  <a href="#">submit</a>
+  <a href="#" style="margin-left: auto; margin-right: 20px">login</a>
+</div>
+<div style="display: flex">
+  <div>
+    <div *ngFor="let art of articles">
+      <a href="{{art.url}}" target="_blank">{{art.title}}</a>
+      <app-likes></app-likes>
+    </div>
+  </div>
+  <form>
+    <label>
+      <input [(ngModel)]="title">
+    </label> Input Title
+    <br>
+    <label>
+      <input [(ngModel)]="url">
+    </label> Input Url
+    <br>
+    <input class="btn btn-outline-danger" style="margin-left: 10px" (click)="addArticle()" type="button" value="Add">
+  </form>
+</div>
+<div class="footer">
+  <p>@Phuclee, 2021</p>
+</div>
+
