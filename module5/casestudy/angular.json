@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "baitap": {
+    "casestudy": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/baitap",
+            "outputPath": "dist/casestudy",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "baitap:build"
+            "browserTarget": "casestudy:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "baitap:build:production"
+              "browserTarget": "casestudy:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "baitap:build"
+            "browserTarget": "casestudy:build"
           }
         },
         "test": {
@@ -110,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "baitap:serve"
+            "devServerTarget": "casestudy:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "baitap:serve:production"
+              "devServerTarget": "casestudy:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "baitap",
+  "defaultProject": "casestudy",
   "cli": {
-    "analytics": "4d92edb4-4b9e-4cf4-b9b0-0088e773f809"
+    "analytics": "81bc3039-6aa9-4424-83a0-3b6c6e5ff195"
   }
 }
