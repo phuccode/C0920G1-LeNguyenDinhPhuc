@@ -1,19 +1,44 @@
 {
-  "studentList": [
-    {
-      "id": 1,
-      "name": "Tien",
-      "dateOfBirth": "2k"
-    },
-    {
-      "id": 2,
-      "name": "Long",
-      "dateOfBirth": "1999"
-    },
+  "customerList": [
     {
       "id": 3,
-      "name": "Khanh",
-      "dateOfBirth": "2k1"
+      "idCustomerType": 1,
+      "name": "anh",
+      "dateOfBirth": "11-11-1999",
+      "CMND": "123456688",
+      "phone": "1010101",
+      "email": "anh@gmail.com",
+      "address": "DaNang"
+    },
+    {
+      "id": 6,
+      "idCustomerType": "1",
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 7,
+      "idCustomerType": "1",
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 8,
+      "idCustomerType": "1",
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
     }
   ]
 }
