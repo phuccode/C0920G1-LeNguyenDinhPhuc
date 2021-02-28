@@ -20,17 +20,25 @@ export class CustomerServiceService {
   //   return customerList.find(customerObj => customerObj.id === customerId);
   // }
 
+  url = 'http://localhost:3000/customerList';
   createCustomer(customer){
-    return this.http.post('http://localhost:3000/customerList', customer);
+    return this.http.post(this.url, customer);
   }
-  getAllCustomer(){
-    return this.http.get('http://localhost:3000/customerList')
-  }
-  editCustomer(){
 
+  getAllCustomer(){
+    return this.http.get(this.url)
   }
+
+  getCustomer(id){
+    return this.http.get(this.url + '/' + id)
+  }
+
+  editCustomer(customer, data){
+    return this.http.put(this.url + '/' + customer, data)
+  }
+
   deleteCustomer(customer){
-    return this.http.delete('http://localhost:3000/customerList'+ '/' + customer)
+    return this.http.delete(this.url + '/' + customer)
   }
 
 }

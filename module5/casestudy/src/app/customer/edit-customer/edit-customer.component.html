@@ -1,16 +1,39 @@
-<form>
-  <legend>Create customer</legend>
+<!--<form [formGroup]="formCustomer" (submit)="addCustomer(formCustomer.value)">-->
+<form [formGroup]="editCustomer" (ngSubmit)="putEditCustomer()" novalidate>
+  <legend>Edit customer</legend>
+  <div class="mb-3">
+    <label class="form-label">ID</label>
+    <input type="text" class="form-control" formControlName="id" name="id" readonly>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Customer Type</label>
+    <input type="text" class="form-control" formControlName="idCustomerType" name="idCustomerType">
+  </div>
   <div class="mb-3">
     <label class="form-label">Name</label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" formControlName="name" name="name">
   </div>
   <div class="mb-3">
-    <label class="form-label">Country</label>
-    <input type="text" class="form-control">
+    <label class="form-label">Birth</label>
+    <input type="text" class="form-control" formControlName="dateOfBirth" name="dateOfBirth">
   </div>
   <div class="mb-3">
-    <label class="form-label">Gender</label>
-    <input type="text" class="form-control">
+    <label class="form-label">CMND</label>
+    <input type="text" class="form-control" formControlName="CMND" name="CMND">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="text" class="form-control" formControlName="phone" name="phone">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control" formControlName="email" name="email">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" class="form-control" formControlName="address" name="address">
+  </div>
+  <button type="submit" class="btn btn-primary" >Submit</button>
 </form>
+
+

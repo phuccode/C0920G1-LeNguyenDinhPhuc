@@ -1,17 +1,37 @@
 {
   "customerList": [
     {
-      "id": 3,
-      "idCustomerType": 1,
+      "id": 12,
+      "idCustomerType": "2",
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gm.com",
+      "address": "101 "
+    },
+    {
+      "id": 13,
+      "idCustomerType": "1",
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 14,
+      "idCustomerType": "1",
       "name": "anh",
-      "dateOfBirth": "11-11-1999",
-      "CMND": "123456688",
-      "phone": "1010101",
-      "email": "anh@gmail.com",
-      "address": "DaNang"
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
     },
     {
-      "id": 6,
+      "id": 15,
       "idCustomerType": "1",
       "name": "Phúc Lê",
       "dateOfBirth": "11111",
@@ -21,7 +41,7 @@
       "address": "101 Trần Cao Vân"
     },
     {
-      "id": 7,
+      "id": 16,
       "idCustomerType": "1",
       "name": "Phúc Lê",
       "dateOfBirth": "11111",
@@ -31,12 +51,22 @@
       "address": "101 Trần Cao Vân"
     },
     {
-      "id": 8,
-      "idCustomerType": "1",
+      "id": 17,
+      "idCustomerType": "2",
       "name": "Phúc Lê",
       "dateOfBirth": "11111",
-      "CMND": "111111",
+      "CMND": "11111",
       "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 18,
+      "idCustomerType": "1",
+      "name": "AA",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "11",
       "email": "phucle.110898@gmail.com",
       "address": "101 Trần Cao Vân"
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerServiceService} from "../customer-service.service";
-import {Customer} from "../customer";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-customer',
@@ -9,8 +9,10 @@ import {Customer} from "../customer";
 })
 export class ListCustomerComponent implements OnInit {
   customerList: any = [];
+  curPage =  1;
+  term: string;
 
-  constructor(private customerService: CustomerServiceService) {
+  constructor(private customerService: CustomerServiceService, private router: Router) {
     this.customerList = this.findAll();
     console.log(this.customerList);
   }
@@ -26,7 +28,8 @@ export class ListCustomerComponent implements OnInit {
 
   deleteCustomer(customer){
     this.customerService.deleteCustomer(customer).subscribe(() =>{
-
+      this.router.navigateByUrl('/customer')
     })
   }
+
 }

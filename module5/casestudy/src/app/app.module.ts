@@ -7,6 +7,11 @@ import { EditCustomerComponent } from './customer/edit-customer/edit-customer.co
 import { ListCustomerComponent } from './customer/list-customer/list-customer.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {CustomerRoutingModule} from "./customer-routing.module";
+
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    CustomerRoutingModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

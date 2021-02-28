@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerServiceService} from '../customer-service.service';
-import {FormBuilder, FormControl, FormControlName, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-customer',
@@ -9,18 +10,16 @@ import {FormBuilder, FormControl, FormControlName, FormGroup} from '@angular/for
 })
 export class CreateCustomerComponent implements OnInit {
   formCustomer: FormGroup;
-  allCustomer: Object;
-  constructor(private customerService: CustomerServiceService,private fb: FormBuilder) { }
+  constructor( private router: Router, private customerService: CustomerServiceService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.getLatestCustomer();
     this.formCustomer = this.fb.group({
       id:[''],
       idCustomerType: [''],
-      name: [''],
+      name: ['', [Validators.required, Validators.pattern('[A-Za-z]+')]],
       dateOfBirth: [''],
       CMND: [''],
-      phone: [''],
+      phone: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       email: [''],
       address: ['']
     });
@@ -29,14 +28,8 @@ export class CreateCustomerComponent implements OnInit {
   addCustomer(fromObj){
     console.log(fromObj);
     this.customerService.createCustomer(fromObj).subscribe((response) => {
-      // console.log('Hello')
-      this.getLatestCustomer();
+      this.router.navigateByUrl('/customer')
     });
   }
 
-  getLatestCustomer() {
-    this.customerService.getAllCustomer().subscribe((response) => {
-      this.allCustomer = response;
-    })
-  }
 }
