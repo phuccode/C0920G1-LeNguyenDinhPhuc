@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Customer} from './customer';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -21,29 +20,29 @@ export class CustomerServiceService {
   //   return customerList.find(customerObj => customerObj.id === customerId);
   // }
 
-  url = 'http://localhost:8080/employees';
-  // url2 = 'http://localhost:3000/customerType';
-  // createCustomer(customer){
-  //   return this.http.post(this.url, customer);
-  // }
+  url = 'http://localhost:3000/customerList';
+  url2 = 'http://localhost:3000/customerType';
+  createCustomer(customer){
+    return this.http.post(this.url, customer);
+  }
 
-  getAllCustomer():Observable<any> {
+  getAllCustomer(){
     return this.http.get(this.url)
   }
 
-  // getCustomer(id){
-  //   return this.http.get(this.url + '/' + id)
-  // }
-  //
-  // editCustomer(customer, data){
-  //   return this.http.put(this.url + '/' + customer, data)
-  // }
-  //
-  // deleteCustomer(customer){
-  //   return this.http.delete(this.url + '/' + customer)
-  // }
-  //
-  // getAllCustomerType(){
-  //   return this.http.get(this.url2)
-  // }
+  getCustomer(id){
+    return this.http.get(this.url + '/' + id)
+  }
+
+  editCustomer(customer, data){
+    return this.http.put(this.url + '/' + customer, data)
+  }
+
+  deleteCustomer(customer){
+    return this.http.delete(this.url + '/' + customer)
+  }
+
+  getAllCustomerType(){
+    return this.http.get(this.url2)
+  }
 }

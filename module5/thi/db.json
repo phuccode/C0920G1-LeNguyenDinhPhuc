@@ -1,0 +1,135 @@
+{
+  "customerList": [
+    {
+      "id": 16,
+      "idCustomerType": {
+        "id": 3,
+        "name": "Member"
+      },
+      "name": "Phúc Lê",
+      "dateOfBirth": "2021-03-31",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 17,
+      "idCustomerType": {
+        "id": 1,
+        "name": "Gold"
+      },
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "11111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 18,
+      "idCustomerType": {
+        "id": 1,
+        "name": "Gold"
+      },
+      "name": "AA",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "11",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 19,
+      "idCustomerType": {
+        "id": 2,
+        "name": "Diamond"
+      },
+      "name": "Pha",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 20,
+      "idCustomerType": {
+        "id": 3,
+        "name": "Member"
+      },
+      "name": "Ph",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 21,
+      "idCustomerType": {
+        "id": 1,
+        "name": "Gold"
+      },
+      "name": "Phúc Lê",
+      "dateOfBirth": "11111",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 22,
+      "idCustomerType": {
+        "id": 2,
+        "name": "Diamond"
+      },
+      "name": "Ph",
+      "dateOfBirth": "2021-03-18",
+      "CMND": "111111",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 23,
+      "idCustomerType": {
+        "id": 1,
+        "name": "Gold"
+      },
+      "name": "Phú",
+      "dateOfBirth": "",
+      "CMND": "",
+      "phone": "1265395230",
+      "email": "phucle.110898@gmail.com",
+      "address": "101 Trần Cao Vân"
+    },
+    {
+      "id": 24,
+      "idCustomerType": {
+        "id": 2,
+        "name": "Diamond"
+      },
+      "name": "Phúc",
+      "dateOfBirth": "2020-12-20",
+      "CMND": "123445566",
+      "phone": "0902222222",
+      "email": "phucle.110898@gmail.com",
+      "address": "aaa"
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Gold"
+    },
+    {
+      "id": 2,
+      "name": "Diamond"
+    },
+    {
+      "id": 3,
+      "name": "Member"
+    }
+  ]
+}

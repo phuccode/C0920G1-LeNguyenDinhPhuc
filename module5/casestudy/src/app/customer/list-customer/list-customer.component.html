@@ -1,44 +1,33 @@
-<h2 style="text-align: center">List Customer</h2>
-<a [routerLink]="'create'"  style="color: forestgreen;display: flex; justify-content: center"><i class="fas fa-user-plus"></i>Add</a>
-<div class="d-flex">
-  <input class="form-control mr-3" type="text" placeholder="Search name" style="width: 200px" [(ngModel)]="term">
-  <button class="btn btn-outline-success" ><i class="fa fa-search" ></i></button>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Employee List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees | async">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.phone}}</td>
+        <td>{{employee.address}}</td>
+        <td>
+<!--          <button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>-->
+<!--          <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>-->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<table id="example" class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Customer Type</th>
-      <th scope="col">Name</th>
-      <th scope="col">Birth</th>
-      <th scope="col">CMND</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let customer of customerList |filter:term | paginate: { itemsPerPage: 3, currentPage: curPage}">
-    <td>{{customer.id}}</td>
-    <td>{{customer.idCustomerType}}</td>
-    <td>{{customer.name}}</td>
-    <td>{{customer.dateOfBirth}}</td>
-    <td>{{customer.CMND}}</td>
-    <td>{{customer.phone}}</td>
-    <td>{{customer.email}}</td>
-    <td>{{customer.address}}</td>
-    <td>
-      <a [routerLink]="['edit', customer.id]" ><i class="fas fa-edit"></i></a>
-      <a (click)="deleteCustomer(customer.id)" style="margin-left: 20px; color: red"><i class="fas fa-trash-alt"></i></a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<pagination-controls (pageChange)="curPage = $event"></pagination-controls>
-<!--<script>-->
-<!--  $(document).ready(function() {-->
-<!--    $('#example').DataTable();-->
-<!--  } );-->
-<!--</script>-->
 

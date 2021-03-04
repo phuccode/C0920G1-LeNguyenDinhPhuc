@@ -1,74 +1,46 @@
 {
   "customerList": [
     {
-      "id": 12,
-      "idCustomerType": "2",
-      "name": "Phúc Lê",
-      "dateOfBirth": "11111",
-      "CMND": "111111",
-      "phone": "1265395230",
-      "email": "phucle.110898@gm.com",
-      "address": "101 "
+      "id": 2,
+      "makhachhang": {
+        "id": 2,
+        "name": "b"
+      },
+      "ten": "chien",
+      "ngaymoso": "1111-11-30",
+      "batdau": "1111-11-14",
+      "kihan": "6 tháng",
+      "sotiengui": "200.000",
+      "laisuat": "8%",
+      "uudai": "ao mua"
     },
     {
-      "id": 13,
-      "idCustomerType": "1",
-      "name": "Phúc Lê",
-      "dateOfBirth": "11111",
-      "CMND": "111111",
-      "phone": "1265395230",
-      "email": "phucle.110898@gmail.com",
-      "address": "101 Trần Cao Vân"
+      "id": 1,
+      "makhachhang": {
+        "id": 2,
+        "name": "b"
+      },
+      "ten": "phuc",
+      "ngaymoso": "1111-11-30",
+      "batdau": "1111-11-14",
+      "kihan": "6 tháng",
+      "sotiengui": "200.000",
+      "laisuat": "8%",
+      "uudai": "ao mua"
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "a"
     },
     {
-      "id": 14,
-      "idCustomerType": "1",
-      "name": "anh",
-      "dateOfBirth": "11111",
-      "CMND": "111111",
-      "phone": "1265395230",
-      "email": "phucle.110898@gmail.com",
-      "address": "101 Trần Cao Vân"
+      "id": 2,
+      "name": "b"
     },
     {
-      "id": 15,
-      "idCustomerType": "1",
-      "name": "Phúc Lê",
-      "dateOfBirth": "11111",
-      "CMND": "111111",
-      "phone": "1265395230",
-      "email": "phucle.110898@gmail.com",
-      "address": "101 Trần Cao Vân"
-    },
-    {
-      "id": 16,
-      "idCustomerType": "1",
-      "name": "Phúc Lê",
-      "dateOfBirth": "11111",
-      "CMND": "111111",
-      "phone": "1265395230",
-      "email": "phucle.110898@gmail.com",
-      "address": "101 Trần Cao Vân"
-    },
-    {
-      "id": 17,
-      "idCustomerType": "2",
-      "name": "Phúc Lê",
-      "dateOfBirth": "11111",
-      "CMND": "11111",
-      "phone": "1265395230",
-      "email": "phucle.110898@gmail.com",
-      "address": "101 Trần Cao Vân"
-    },
-    {
-      "id": 18,
-      "idCustomerType": "1",
-      "name": "AA",
-      "dateOfBirth": "11111",
-      "CMND": "111111",
-      "phone": "11",
-      "email": "phucle.110898@gmail.com",
-      "address": "101 Trần Cao Vân"
+      "id": 3,
+      "name": "c"
     }
   ]
 }
